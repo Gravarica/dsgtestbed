@@ -1,0 +1,9 @@
+name: audio-resampler
+version: v1
+service_type: audio-resampler
+input: any
+output: audio
+sample_count: 60
+knobs:
+  data_quality: {type: int, min: 2, max: 12, default: 6}
+  target_rate: {type: choice, values: ["8000", "22050", "44100"], default: "22050"}

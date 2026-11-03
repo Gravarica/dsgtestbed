@@ -1,0 +1,12 @@
+nodes:
+  lidar:
+    service: pc-visualizer v1
+    cores: {from: 1, to: 5}
+    parallelism: {from: 1, to: 4}
+    knobs:
+      data_quality: {from: 6, to: 60, step: 6}
+load:
+  rps: {from: 10, to: 400, step: 10}
+  burst_factor: [1, 2, 4, 8]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 5, measure_seconds: 30, runs: 55, repetitions: 3, repeated_share: 0.1, seed: 74}

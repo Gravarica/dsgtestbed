@@ -1,0 +1,58 @@
+nodes:
+  qr:
+    service: qr-detector v1
+    rps: {from: 5, to: 40, step: 5}
+    cores: {from: 1, to: 2}
+    knobs: {data_quality: {from: 300, to: 800, step: 50}}
+  face:
+    service: face-detector v1
+    rps: {from: 5, to: 40, step: 5}
+    cores: {from: 1, to: 2}
+    knobs: {model_size: [1, 2]}
+  lidar:
+    service: pc-visualizer v1
+    rps: {from: 10, to: 60, step: 10}
+    cores: {from: 1, to: 2}
+    knobs: {data_quality: {from: 6, to: 60, step: 6}}
+  anomaly:
+    service: anomaly-detector v1
+    rps: {from: 2, to: 12, step: 2}
+    cores: {from: 2, to: 3}
+    parallelism: [1, 2]
+    knobs: {window_length: [512, 1024, 2048], model_size: [1, 2], threshold: 3.5}
+  audio:
+    service: audio-features v1
+    rps: {from: 5, to: 40, step: 5}
+    cores: {from: 1, to: 2}
+    knobs: {data_quality: {from: 1, to: 12}, mel_bands: 64, frame_ms: 25}
+  logs:
+    service: log-parser v1
+    rps: {from: 5, to: 60, step: 5}
+    cores: {from: 1, to: 2}
+    knobs: {data_quality: {from: 100, to: 1000, step: 100}, pattern_count: [20, 50, 100]}
+  agg-camera:
+    service: sensor-aggregator v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {window_length: [256, 512, 1024, 2048], channels: [4, 8, 16, 32], feature_set: [basic, spectral, full]}
+  agg-environment:
+    service: sensor-aggregator v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {window_length: [256, 512, 1024, 2048], channels: [4, 8, 16, 32], feature_set: [basic, spectral, full]}
+  agg-records:
+    service: table-joiner v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {data_quality: [1000, 10000, 30000], group_count: [100, 1000, 10000]}
+  final:
+    service: sensor-aggregator v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {window_length: [256, 512, 1024], channels: [4, 8, 16], feature_set: [basic, spectral]}
+edges: [qr -> agg-camera, face -> agg-camera, lidar -> agg-environment, anomaly -> agg-environment, audio -> agg-records, logs -> agg-records, agg-camera -> final, agg-environment -> final, agg-records -> final]
+link: requests
+load:
+  burst_factor: [1, 2, 4, 8]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 5, measure_seconds: 30, runs: 250, seed: 3}

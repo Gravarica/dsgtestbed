@@ -1,0 +1,75 @@
+{
+  "service": "voice-detector:v1",
+  "status": "verified",
+  "verified_at": "2026-10-13T02:26:30+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-10-13T02:26:30+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:68d969fde663e07a3476ce5af447dff2d4b5cf63870b015e414b9dcdc277b7fd",
+  "proof": "At default settings, with two seeded one-second silences inserted into each of the 60 clips, the returned stretches contain at least 95 per cent of the loud speech blocks found independently from the samples and no time inside the inserted silences away from their edges.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings, with two seeded one-second silences inserted into each of the 60 clips, the returned stretches contain at least 95 per cent of the loud speech blocks found independently from the samples and no time inside the inserted silences away from their edges.",
+    "notes": "Written by a sub-agent of the orchestrating Claude Code session, from the application-batch brief. NumPy only; a likelihood-ratio detector with a noise estimate that follows the clip frame by frame, a loudness gate and a spectral-flatness gate, then smoothing. One item takes about 8 ms at default settings, 3 ms at 2 seconds and 28 ms at 12 seconds with 10 ms frames; prepare.sh copies the clips from speech-transcriber v1 when present."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 8.397,
+        "median": 8.394,
+        "p99": 9.037
+      },
+      "spread_std_over_mean": 0.021,
+      "measured_items": 303,
+      "measured_at_items_per_second": 37.033484181001484,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 92.8,
+      "seconds_inside_process": 2.651,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 2,
+        "highest_value": 12,
+        "at_lowest_ms": 2.969,
+        "at_highest_ms": 15.405,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "frame_length": {
+        "lowest_value": 10,
+        "highest_value": 30,
+        "at_lowest_ms": 13.728,
+        "at_highest_ms": 9.609,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher is faster"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 200.0,
+      "kept_up": true,
+      "processing_mean_ms": 8.698,
+      "processing_mean_ms_with_one_worker": 8.397
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 37.1
+  }
+}

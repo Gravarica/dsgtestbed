@@ -1,0 +1,75 @@
+{
+  "service": "audio-denoiser:v1",
+  "status": "verified",
+  "verified_at": "2026-10-13T02:23:49+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-10-13T02:23:49+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:7196052b41b325e60d54a0501769f4ca98081fbda49e0fe2585c233962189069",
+  "proof": "At default settings each of the 60 clips, with white noise 5 dB below the clip added, comes out at least 3 dB closer to the clean recording than the noisy clip was, measured as signal-to-noise ratio against the clean samples, with the same length and only finite values.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings each of the 60 clips, with white noise 5 dB below the clip added, comes out at least 3 dB closer to the clean recording than the noisy clip was, measured as signal-to-noise ratio against the clean samples, with the same length and only finite values.",
+    "notes": "Written by a sub-agent of the orchestrating Claude Code session, from the application-batch brief. NumPy only; spectral subtraction over a short-time Fourier transform of size resolution with a fixed hop of 8 ms, the noise level of every frequency taken from the quietest fifth of the frames. One item takes about 16 ms at default settings, 4 ms at the lightest and 65 ms at the heaviest; a steady tone counts as background and is removed with the noise."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 17.427,
+        "median": 17.426,
+        "p99": 18.083
+      },
+      "spread_std_over_mean": 0.017,
+      "measured_items": 229,
+      "measured_at_items_per_second": 27.979705011140574,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 128.8,
+      "seconds_inside_process": 4.059,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 2,
+        "highest_value": 12,
+        "at_lowest_ms": 9.346,
+        "at_highest_ms": 33.521,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "resolution": {
+        "lowest_value": "512",
+        "highest_value": "2048",
+        "at_lowest_ms": 11.172,
+        "at_highest_ms": 33.061,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 114.8,
+      "kept_up": true,
+      "processing_mean_ms": 25.381,
+      "processing_mean_ms_with_one_worker": 17.427
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 27.8
+  }
+}

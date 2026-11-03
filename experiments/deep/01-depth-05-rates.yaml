@@ -1,0 +1,28 @@
+nodes:
+  signer-01:
+    service: hash-signer v1
+    cores: 0.5
+    knobs: {data_quality: 4, algorithm: sha256, rounds: 3000}
+  agg-02:
+    service: sensor-aggregator v1
+    cores: 0.5
+    knobs: {window_length: 512, channels: 8, feature_set: basic}
+  audio-03:
+    service: audio-features v1
+    cores: 0.5
+    knobs: {data_quality: 4, mel_bands: 40, frame_ms: 25}
+  logs-04:
+    service: log-parser v1
+    cores: 0.5
+    knobs: {data_quality: 200, pattern_count: 20}
+  idx-05:
+    service: text-indexer v1
+    cores: 0.5
+    knobs: {data_quality: 50, compression_level: 6, ngram_size: 2}
+edges: [signer-01 -> agg-02, agg-02 -> audio-03, audio-03 -> logs-04, logs-04 -> idx-05]
+link: rates
+load:
+  rps: [5, 10, 20]
+  burst_factor: [1, 2, 4]
+  burst_seconds: 1
+run: {warmup_seconds: 9, measure_seconds: 30, repetitions: 1, seed: 1005}

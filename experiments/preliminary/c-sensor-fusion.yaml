@@ -1,0 +1,24 @@
+nodes:
+  pc:
+    service: pc-visualizer v1
+    cores: [2, 3]
+    knobs:
+      data_quality: [6, 30, 60]
+  qr:
+    service: qr-detector v1
+    cores: [2, 3]
+    knobs:
+      data_quality: [300, 552]
+  idx:
+    service: text-indexer v1
+    cores: [2, 5]
+    parallelism: [1, 2, 4]
+    knobs:
+      data_quality: 50
+      compression_level: 6
+      ngram_size: 2
+edges: [pc -> idx, qr -> idx]
+link: requests
+load:
+  rps: [20, 40, 80]
+run: {warmup_seconds: 10, measure_seconds: 60, runs: 20, seed: 8}

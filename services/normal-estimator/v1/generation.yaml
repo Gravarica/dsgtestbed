@@ -1,0 +1,10 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings the normals of a synthetic tilted plane match its known normal, and on three real scans
+  every point gets a unit normal that faces the sensor, with the normals of the ground points near the car
+  pointing upward (median alignment above 0.95).
+notes: Written by a sub-agent of the orchestrating Claude Code session from the final brief, with no person
+  involved. Every worker thins each scan to one point per 0.3 m voxel within data_quality metres when it starts;
+  the neighbour search and the plane fit per point are the measured work.

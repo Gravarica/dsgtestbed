@@ -1,0 +1,18 @@
+nodes:
+  pc:
+    service: pc-visualizer v1
+    cores: [2, 3, 5]
+    parallelism: [1, 2, 4]
+  idx:
+    service: text-indexer v1
+    cores: [2, 3, 5]
+    parallelism: [1, 2, 4]
+  face:
+    service: face-detector v1
+    cores: [2, 3, 5]
+    parallelism: [1, 2, 4]
+edges: [pc -> idx, idx -> face]
+link: requests
+load:
+  rps: [40, 80, 160]
+run: {warmup_seconds: 10, measure_seconds: 60, runs: 24, seed: 9}

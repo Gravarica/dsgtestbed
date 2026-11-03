@@ -1,0 +1,10 @@
+name: ground-remover
+asked_by: ""
+date: 2026-10-12
+task: Find the ground plane in each lidar scan and return the points that do not belong to it.
+data: {source: reuse, from: pc-visualizer/v1, files: KITTI raw 2011_09_26_drive_0001_sync scans
+  (CC BY-NC-SA 3.0); copied or fetched by prepare.sh}
+knobs:
+  - {name: data_quality, type: int, min: 6, max: 60, default: 30}
+  - {name: attempts, type: int, min: 20, max: 400, default: 100}
+limits: {memory: 8g, packages: no PyTorch}

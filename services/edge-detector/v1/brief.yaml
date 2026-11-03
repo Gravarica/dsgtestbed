@@ -1,0 +1,9 @@
+name: edge-detector
+asked_by: ""
+date: 2026-10-12
+task: Find the edges in each camera frame and return the contours of the shapes they form.
+data: {source: reuse, from: qr-detector/v1, files: [QR_Video.mp4]}
+knobs:
+  - {name: data_quality, type: int, min: 160, max: 640, default: 320}
+  - {name: smoothing, type: int, min: 3, max: 15, default: 5}
+limits: {memory: 8g, packages: no PyTorch}

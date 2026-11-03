@@ -1,0 +1,10 @@
+name: frame-source
+asked_by: ""
+date: 2026-10-22
+task: Act as the camera of a map-reduce analytics tree. Take each camera frame and stamp it before it is sent to
+  every detector at once, by computing a checksum of its pixels and returning the frame number, its size and the
+  checksum, so that every detector can be checked to work on the same frame.
+data: {source: reuse, from: qr-detector/v1, files: [QR_Video.mp4]}
+knobs:
+  - {name: checksum, type: choice, values: [crc32, adler32], default: crc32}
+limits: {memory: 8g, packages: no PyTorch}

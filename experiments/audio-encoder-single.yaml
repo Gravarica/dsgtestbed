@@ -1,0 +1,13 @@
+nodes:
+  audio-encoder:
+    service: audio-encoder v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      data_quality: 6
+      format: flac
+load:
+  rps: 106.2
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

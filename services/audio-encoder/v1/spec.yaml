@@ -1,0 +1,9 @@
+name: audio-encoder
+version: v1
+service_type: audio-encoder
+input: any
+output: bytes
+sample_count: 60
+knobs:
+  data_quality: {type: int, min: 2, max: 12, default: 6}
+  format: {type: choice, values: [flac, ogg], default: flac}

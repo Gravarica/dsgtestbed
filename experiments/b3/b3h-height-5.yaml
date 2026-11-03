@@ -1,0 +1,48 @@
+nodes:
+  camera: {service: frame-source v1, discipline: fifo, cores: 1.0, parallelism: 1}
+  leaf-1: {service: cv-analyzer v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  leaf-2: {service: face-detector v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  leaf-3: {service: cv-analyzer v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  leaf-4: {service: face-detector v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  leaf-5: {service: cv-analyzer v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  leaf-6: {service: face-detector v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  leaf-7: {service: cv-analyzer v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  leaf-8: {service: face-detector v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  leaf-9: {service: cv-analyzer v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  leaf-10: {service: face-detector v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  leaf-11: {service: cv-analyzer v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  leaf-12: {service: face-detector v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  leaf-13: {service: cv-analyzer v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  leaf-14: {service: face-detector v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  leaf-15: {service: cv-analyzer v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  leaf-16: {service: face-detector v2, discipline: fifo, cores: 1.5, parallelism: 1}
+  merge-1-1: {service: image-transformer v1, discipline: fifo, cores: 1.5, parallelism: 1}
+  merge-1-2: {service: image-transformer v1, discipline: fifo, cores: 1.5, parallelism: 1}
+  merge-1-3: {service: image-transformer v1, discipline: fifo, cores: 1.5, parallelism: 1}
+  merge-1-4: {service: image-transformer v1, discipline: fifo, cores: 1.5, parallelism: 1}
+  merge-1-5: {service: image-transformer v1, discipline: fifo, cores: 1.5, parallelism: 1}
+  merge-1-6: {service: image-transformer v1, discipline: fifo, cores: 1.5, parallelism: 1}
+  merge-1-7: {service: image-transformer v1, discipline: fifo, cores: 1.5, parallelism: 1}
+  merge-1-8: {service: image-transformer v1, discipline: fifo, cores: 1.5, parallelism: 1}
+  merge-2-1: {service: image-transformer v1, discipline: fifo, cores: 1.5, parallelism: 1}
+  merge-2-2: {service: image-transformer v1, discipline: fifo, cores: 1.5, parallelism: 1}
+  merge-2-3: {service: image-transformer v1, discipline: fifo, cores: 1.5, parallelism: 1}
+  merge-2-4: {service: image-transformer v1, discipline: fifo, cores: 1.5, parallelism: 1}
+  merge-3-1: {service: image-transformer v1, discipline: fifo, cores: 1.5, parallelism: 1}
+  merge-3-2: {service: image-transformer v1, discipline: fifo, cores: 1.5, parallelism: 1}
+  merge-4-1: {service: image-transformer v1, discipline: fifo, cores: 1.5, parallelism: 1}
+edges: [camera -> leaf-1, camera -> leaf-2, camera -> leaf-3, camera -> leaf-4, camera -> leaf-5, camera -> leaf-6, camera -> leaf-7, camera ->
+    leaf-8, camera -> leaf-9, camera -> leaf-10, camera -> leaf-11, camera -> leaf-12, camera -> leaf-13, camera -> leaf-14, camera -> leaf-15,
+  camera -> leaf-16, leaf-1 -> merge-1-1, leaf-2 -> merge-1-1, leaf-3 -> merge-1-2, leaf-4 -> merge-1-2, leaf-5 -> merge-1-3, leaf-6 -> merge-1-3,
+  leaf-7 -> merge-1-4, leaf-8 -> merge-1-4, leaf-9 -> merge-1-5, leaf-10 -> merge-1-5, leaf-11 -> merge-1-6, leaf-12 -> merge-1-6, leaf-13 ->
+    merge-1-7, leaf-14 -> merge-1-7, leaf-15 -> merge-1-8, leaf-16 -> merge-1-8, merge-1-1 -> merge-2-1, merge-1-2 -> merge-2-1, merge-1-3 ->
+    merge-2-2, merge-1-4 -> merge-2-2, merge-1-5 -> merge-2-3, merge-1-6 -> merge-2-3, merge-1-7 -> merge-2-4, merge-1-8 -> merge-2-4, merge-2-1
+    -> merge-3-1, merge-2-2 -> merge-3-1, merge-2-3 -> merge-3-2, merge-2-4 -> merge-3-2, merge-3-1 -> merge-4-1, merge-3-2 -> merge-4-1]
+link: requests
+fan_in: join
+shared_knobs:
+  data_quality: {from: 160, to: 256, step: 32}
+  model_size: [1, 2]
+load: {utilization: 0.5}
+run: {warmup_seconds: 10, measure_seconds: 30, measure_requests: 1000, longest_measure_seconds: 900, probe_seconds: 8, cores_may_exceed_the_machine: true,
+  queue_capacity: 1000000, runs: 8, repetitions: 6, seed: 5500}

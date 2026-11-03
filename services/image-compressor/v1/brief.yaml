@@ -1,0 +1,10 @@
+name: image-compressor
+asked_by: ""
+date: 2026-09-26
+task: Encode each camera frame into a compressed image file and return the encoded bytes.
+data: {source: reuse, from: qr-detector/v1, files: [QR_Video.mp4]}
+knobs:
+  - {name: data_quality, type: int, min: 100, max: 1000, default: 552}
+  - {name: encoding_quality, type: int, min: 10, max: 95, default: 75}
+  - {name: format, type: choice, values: [jpeg, webp, png], default: jpeg}
+limits: {memory: 8g, packages: no PyTorch}

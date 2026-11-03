@@ -1,0 +1,14 @@
+nodes:
+  audio-features:
+    service: audio-features v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      data_quality: 6
+      mel_bands: 64
+      frame_ms: 25
+load:
+  rps: 139.9
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

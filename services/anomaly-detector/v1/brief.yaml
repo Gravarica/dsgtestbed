@@ -1,0 +1,11 @@
+name: anomaly-detector
+asked_by: ""
+date: 2026-09-26
+task: Find the anomalous points in a window of one sensor stream and return their positions.
+data: {source: generate, from: seeded synthetic sensor streams with injected spikes, level shifts and drifts
+    whose positions are known, created by prepare.sh or a small script}
+knobs:
+  - {name: window_length, type: int, min: 256, max: 16384, default: 2048}
+  - {name: model_size, type: int, min: 1, max: 3, default: 2}
+  - {name: threshold, type: float, min: 2.0, max: 6.0, default: 3.5}
+limits: {memory: 8g, packages: no PyTorch}

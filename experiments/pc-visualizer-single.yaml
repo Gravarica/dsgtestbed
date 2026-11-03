@@ -1,0 +1,12 @@
+nodes:
+  pc:
+    service: pc-visualizer v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      data_quality: 30         # distance in metres around the car
+load:
+  rps: 100
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

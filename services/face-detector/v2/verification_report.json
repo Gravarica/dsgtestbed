@@ -1,0 +1,75 @@
+{
+  "service": "face-detector:v2",
+  "status": "verified",
+  "verified_at": "2026-10-13T02:15:25+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-10-13T02:15:25+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:fa4c10026425d5d983775414519336d2be83e0bde3ae1c8ff5f4c095875daa9e",
+  "proof": "At default settings the service finds at least ten of the twelve people whose faces are marked in pedestrian.jpg, each within 0.4 overlap of the marked box, and returns at most three boxes that are no marked face.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings the service finds at least ten of the twelve people whose faces are marked in pedestrian.jpg, each within 0.4 overlap of the marked box, and returns at most three boxes that are no marked face.",
+    "notes": "Written by a sub-agent of the orchestrating Claude Code session, from the application-batch brief. The detector is YuNet through OpenCV, which runs at any frame size, so data_quality is the height the frame is detected at; model_size 2 adds a second pass on the frame enlarged twice, about five times the cost of model_size 1."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 5.745,
+        "median": 5.725,
+        "p99": 6.129
+      },
+      "spread_std_over_mean": 0.028,
+      "measured_items": 646,
+      "measured_at_items_per_second": 78.95525344819201,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 289.1,
+      "seconds_inside_process": 3.811,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 160,
+        "highest_value": 640,
+        "at_lowest_ms": 1.672,
+        "at_highest_ms": 25.991,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "model_size": {
+        "lowest_value": 1,
+        "highest_value": 2,
+        "at_lowest_ms": 5.969,
+        "at_highest_ms": 33.501,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 200.0,
+      "kept_up": true,
+      "processing_mean_ms": 7.867,
+      "processing_mean_ms_with_one_worker": 5.745
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 79.1
+  }
+}

@@ -1,0 +1,25 @@
+nodes:
+  detector:
+    service: cv-analyzer v2
+    discipline: fifo
+    cores_beyond_the_workers: 0.5
+    parallelism: [1, 2, 3, 4]
+    knobs:
+      model_size: [1, 2]
+  transformer:
+    service: image-transformer v1
+    discipline: fifo
+    cores_beyond_the_workers: 0.5
+    parallelism: [1, 2, 3, 4]
+  compressor:
+    service: image-compressor v1
+    discipline: fifo
+    cores_beyond_the_workers: 0.5
+    parallelism: [1, 2, 3, 4]
+edges: [detector -> transformer, transformer -> compressor]
+link: requests
+shared_knobs:
+  data_quality: {from: 160, to: 640, step: 32}
+load: {utilization: 0.5, arrival_process: renewal, arrival_variability: 3}
+run: {warmup_seconds: 10, measure_seconds: 30, measure_requests: 400, longest_measure_seconds: 180, probe_seconds: 8, queue_capacity: 1000000,
+  runs: 50, seed: 1018}

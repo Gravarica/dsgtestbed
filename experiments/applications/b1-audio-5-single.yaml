@@ -1,0 +1,34 @@
+nodes:
+  resampler:
+    service: audio-resampler v1
+    discipline: fifo
+    cores: [1, 1.5, 2]
+    parallelism: 1
+  pitch:
+    service: pitch-tracker v1
+    discipline: fifo
+    cores: [1, 1.5, 2]
+    parallelism: 1
+  features:
+    service: audio-features v1
+    discipline: fifo
+    cores: [1, 1.5, 2]
+    parallelism: 1
+  transcriber:
+    service: speech-transcriber v1
+    discipline: fifo
+    cores: [1, 1.5, 2]
+    parallelism: 1
+    knobs: {model_size: 1}
+  encoder:
+    service: audio-encoder v1
+    discipline: fifo
+    cores: [1, 1.5, 2]
+    parallelism: 1
+edges: [resampler -> pitch, pitch -> features, features -> transcriber, transcriber -> encoder]
+link: requests
+shared_knobs:
+  data_quality: {from: 2, to: 12}
+load: {utilization: 0.5}
+run: {warmup_seconds: 10, measure_seconds: 30, measure_requests: 400, longest_measure_seconds: 180, probe_seconds: 8, queue_capacity: 1000000,
+  runs: 150, seed: 2051}

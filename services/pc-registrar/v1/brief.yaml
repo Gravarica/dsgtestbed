@@ -1,0 +1,10 @@
+name: pc-registrar
+asked_by: ""
+date: 2026-10-12
+task: Align each lidar scan with the scan before it and return the rotation and translation between them.
+data: {source: reuse, from: pc-visualizer/v1, files: KITTI raw 2011_09_26_drive_0001_sync scans
+  (CC BY-NC-SA 3.0); copied or fetched by prepare.sh}
+knobs:
+  - {name: data_quality, type: int, min: 6, max: 60, default: 30}
+  - {name: iterations, type: int, min: 5, max: 40, default: 15}
+limits: {memory: 8g, packages: no PyTorch}

@@ -1,0 +1,6 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings every sample frame compared with itself gives no region, and compared with a copy of itself shifted sideways by five per cent of its width it gives regions that contain more than ninety per cent of the clearly changed pixels.
+notes: Written by a sub-agent of the orchestrating session from the application-batch brief. A sample is the pair (frame, frame before it), so nothing is remembered between items; difference is cheap, optical_flow (dense Farneback flow) costs many times more.

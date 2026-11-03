@@ -1,0 +1,9 @@
+name: log-parser
+version: v1
+service_type: log-parser
+input: any
+output: json
+sample_count: 60
+knobs:
+  data_quality: {type: int, min: 100, max: 2000, default: 500}
+  pattern_count: {type: int, min: 5, max: 200, default: 50}

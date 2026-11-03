@@ -1,0 +1,9 @@
+name: edge-detector
+version: v1
+service_type: edge-detector
+input: any
+output: json
+sample_count: 60
+knobs:
+  data_quality: {type: int, min: 160, max: 640, default: 320}
+  smoothing: {type: int, min: 3, max: 15, default: 5}

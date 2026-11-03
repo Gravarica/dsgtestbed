@@ -1,0 +1,10 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings every one of the 60 scans is thinned to exactly one point per occupied voxel, fewer
+  than half of its points, and on the first scan the returned point of a sampled voxel is the centroid of the
+  points of the scan that lie in it.
+notes: Written by a sub-agent of the orchestrating Claude Code session from the final brief, with no person
+  involved. The scan is cut to data_quality metres once per worker; the voxel grid is the work per item, so the
+  time follows the number of points within that distance, and voxel_size mainly changes how many points come out.

@@ -1,0 +1,12 @@
+name: sensor-aggregator
+asked_by: ""
+date: 2026-09-26
+task: Summarise a window of multichannel sensor readings into one record with per-channel statistics,
+  and at richer feature sets also band energies per channel and correlations between channels.
+data: {source: generate, from: seeded synthetic IoT signals (temperature, vibration, current, humidity
+  style channels with trends, periodic parts and noise), created by prepare.sh or a small script}
+knobs:
+  - {name: window_length, type: int, min: 64, max: 8192, default: 1024}
+  - {name: channels, type: int, min: 1, max: 64, default: 16}
+  - {name: feature_set, type: choice, values: [basic, spectral, full], default: basic}
+limits: {memory: 8g, packages: no PyTorch}

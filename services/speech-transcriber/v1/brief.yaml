@@ -1,0 +1,11 @@
+name: speech-transcriber
+asked_by: ""
+date: 2026-09-20
+task: Transcribe the speech in each audio clip and return the text.
+data: {source: download, from: LibriSpeech dev-clean (OpenSLR, CC BY 4.0), fetched by prepare.sh}
+knobs:
+  - {name: model_size, type: int, min: 1, max: 2, default: 1, expect: higher takes longer}
+  - {name: data_quality, type: int, min: 2, max: 12, default: 6, expect: higher takes longer}
+proof: At default settings every sample clip yields at least five words and the transcript matches
+  the start of the reference transcript with a word error rate below 25 per cent.
+limits: {memory: 8g, packages: no PyTorch}

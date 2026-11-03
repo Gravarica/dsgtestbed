@@ -1,0 +1,75 @@
+nodes:
+  qr-01:
+    service: qr-detector v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [300, 552]
+  tables-02:
+    service: table-joiner v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [1000, 3000, 10000]
+      group_count: [10, 100, 1000]
+  camera-03:
+    service: image-compressor v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [300, 552, 800]
+      encoding_quality: [50, 75, 90]
+      format: jpeg
+  signer-04:
+    service: hash-signer v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [1, 4, 16]
+      algorithm: [sha256, blake2b]
+      rounds: [1000, 3000, 10000]
+  cluster-05:
+    service: pc-clusterer v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [10, 20, 30]
+      voxel_size: [0.5, 0.75, 1.0]
+      cluster_distance: 0.7
+  cluster-06:
+    service: pc-clusterer v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [10, 20, 30]
+      voxel_size: [0.5, 0.75, 1.0]
+      cluster_distance: 0.7
+  agg-07:
+    service: sensor-aggregator v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      window_length: [256, 512, 1024]
+      channels: [4, 8, 16]
+      feature_set: [basic, spectral]
+  tables-08:
+    service: table-joiner v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [1000, 3000, 10000]
+      group_count: [10, 100, 1000]
+  agg-09:
+    service: sensor-aggregator v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      window_length: [256, 512, 1024]
+      channels: [4, 8, 16]
+      feature_set: [basic, spectral]
+  agg-10:
+    service: sensor-aggregator v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      window_length: [256, 512, 1024]
+      channels: [4, 8, 16]
+      feature_set: [basic, spectral]
+edges: [qr-01 -> tables-02, tables-02 -> camera-03, camera-03 -> signer-04, signer-04 -> cluster-05, cluster-05 -> cluster-06, cluster-06 -> agg-07,
+  agg-07 -> tables-08, tables-08 -> agg-09, agg-09 -> agg-10]
+link: requests
+load:
+  rps: {from: 5, to: 30, step: 5}
+  burst_factor: [1, 2, 4]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 12, measure_seconds: 30, runs: 40, seed: 3103}

@@ -1,0 +1,75 @@
+nodes:
+  cluster-01:
+    service: pc-clusterer v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [10, 20, 30]
+      voxel_size: [0.5, 0.75, 1.0]
+      cluster_distance: 0.7
+  cluster-02:
+    service: pc-clusterer v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [10, 20, 30]
+      voxel_size: [0.5, 0.75, 1.0]
+      cluster_distance: 0.7
+  idx-03:
+    service: text-indexer v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [10, 50, 100]
+      compression_level: [1, 6, 9]
+      ngram_size: [1, 2]
+  anomaly-04:
+    service: anomaly-detector v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      model_size: 1
+      window_length: [512, 1024, 2048]
+      threshold: 3.5
+  signer-05:
+    service: hash-signer v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [1, 4, 16]
+      algorithm: [sha256, blake2b]
+      rounds: [1000, 3000, 10000]
+  agg-06:
+    service: sensor-aggregator v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      window_length: [256, 512, 1024]
+      channels: [4, 8, 16]
+      feature_set: [basic, spectral]
+  tables-07:
+    service: table-joiner v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [1000, 3000, 10000]
+      group_count: [10, 100, 1000]
+  idx-08:
+    service: text-indexer v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [10, 50, 100]
+      compression_level: [1, 6, 9]
+      ngram_size: [1, 2]
+  face-09:
+    service: face-detector v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      model_size: [1, 2]
+  cv-10:
+    service: cv-analyzer v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      model_size: 1
+      data_quality: [128, 160]
+edges: [cluster-01 -> cluster-02, cluster-02 -> idx-03, idx-03 -> anomaly-04, anomaly-04 -> signer-05, signer-05 -> agg-06, agg-06 -> tables-07,
+  tables-07 -> idx-08, idx-08 -> face-09, face-09 -> cv-10]
+link: requests
+load:
+  rps: {from: 5, to: 30, step: 5}
+  burst_factor: [1, 2, 4]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 12, measure_seconds: 30, runs: 40, seed: 3102}

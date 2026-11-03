@@ -1,0 +1,8 @@
+name: qr-detector
+version: v1
+service_type: elastic-workbench-qr-detector
+input: any
+output: image
+sample_count: 60
+knobs:
+  data_quality: {type: int, min: 100, max: 1000, default: 552}

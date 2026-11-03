@@ -1,0 +1,13 @@
+nodes:
+  speech:
+    service: speech-transcriber v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      model_size: 1            # 1 or 2: small or large speech model
+      data_quality: 6          # seconds of audio that are transcribed
+load:
+  rps: 1
+run:
+  warmup_seconds: 5
+  measure_seconds: 30

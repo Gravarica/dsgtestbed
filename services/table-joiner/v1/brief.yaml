@@ -1,0 +1,12 @@
+name: table-joiner
+asked_by: ""
+date: 2026-09-26
+task: Join each batch of order records with a customer table and return the order totals aggregated per
+  customer group.
+data: {source: generate, from: seeded synthetic order and customer tables, created by prepare.sh or a small
+  script}
+knobs:
+  - {name: data_quality, type: int, min: 1000, max: 1000000, default: 100000}
+  - {name: group_count, type: int, min: 10, max: 100000, default: 1000}
+limits: {memory: 8g, packages: no PyTorch, note: at the largest settings one worker should need several
+  hundred megabytes so that memory becomes a real resource}

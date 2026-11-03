@@ -1,0 +1,7 @@
+tool: Claude Code
+model: Claude Opus 5 (1M context)
+mode: autonomous
+result: verified
+notes: The clips and the two Vosk models are fetched into fetched/ by prepare.sh, so build the image only
+  after just prepare. data_quality is the number of seconds of each clip that are transcribed, which is why
+  only recordings of at least twelve seconds are kept as samples.

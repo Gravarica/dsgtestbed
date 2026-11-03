@@ -1,0 +1,12 @@
+nodes:
+  camera: {service: frame-source v1, discipline: fifo, cores: 1.0, parallelism: 1}
+  leaf-1: {service: cv-analyzer v2, discipline: fifo, cores: 1.5, parallelism: 1}
+edges: [camera -> leaf-1]
+link: requests
+fan_in: join
+shared_knobs:
+  data_quality: {from: 160, to: 256, step: 32}
+  model_size: [1, 2]
+load: {utilization: 0.5}
+run: {warmup_seconds: 10, measure_seconds: 30, measure_requests: 1000, longest_measure_seconds: 900, probe_seconds: 8, cores_may_exceed_the_machine: true,
+  queue_capacity: 1000000, runs: 8, repetitions: 6, seed: 5100}

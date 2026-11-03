@@ -1,0 +1,13 @@
+nodes:
+  logs:
+    service: log-parser v1
+    cores: {from: 1, to: 5}
+    parallelism: {from: 1, to: 4}
+    knobs:
+      data_quality: {from: 100, to: 2000, step: 100}
+      pattern_count: [5, 10, 20, 50, 100, 200]
+load:
+  rps: {from: 10, to: 400, step: 10}
+  burst_factor: [1, 2, 4, 8]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 5, measure_seconds: 30, runs: 60, repetitions: 3, repeated_share: 0.1, seed: 24}

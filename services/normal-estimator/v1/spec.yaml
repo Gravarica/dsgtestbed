@@ -1,0 +1,9 @@
+name: normal-estimator
+version: v1
+service_type: normal-estimator
+input: any
+output: normals
+sample_count: 60
+knobs:
+  data_quality: {type: int, min: 6, max: 60, default: 30}
+  neighbours: {type: int, min: 5, max: 40, default: 10}

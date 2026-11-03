@@ -1,0 +1,11 @@
+name: cv-analyzer
+asked_by: ""
+date: 2026-10-12
+task: Detect the objects in each camera frame with a YOLOv10 model and return their boxes, classes and scores;
+  the same service as v1 with the frame height range of the vision application.
+data: {source: reuse, from: cv-analyzer/v1, files: "the sample video and the model export of v1 (prepare.sh),
+  exported so that every frame height of the range works"}
+knobs:
+  - {name: data_quality, type: int, min: 160, max: 640, default: 320}
+  - {name: model_size, type: int, min: 1, max: 4, default: 2}
+limits: {memory: 8g, packages: no PyTorch at run time}

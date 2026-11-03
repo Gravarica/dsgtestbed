@@ -1,0 +1,13 @@
+nodes:
+  audio-denoiser:
+    service: audio-denoiser v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      data_quality: 6
+      resolution: '1024'
+load:
+  rps: 27.8
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

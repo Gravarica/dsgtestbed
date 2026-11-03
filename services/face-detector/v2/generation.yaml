@@ -1,0 +1,9 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings the service finds at least ten of the twelve people whose faces are marked in
+  pedestrian.jpg, each within 0.4 overlap of the marked box, and returns at most three boxes that are no marked face.
+notes: Written by a sub-agent of the orchestrating Claude Code session, from the application-batch brief. The
+  detector is YuNet through OpenCV, which runs at any frame size, so data_quality is the height the frame is
+  detected at; model_size 2 adds a second pass on the frame enlarged twice, about five times the cost of model_size 1.

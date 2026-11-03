@@ -1,0 +1,83 @@
+{
+  "service": "anomaly-detector:v1",
+  "status": "verified",
+  "verified_at": "2026-09-26T14:15:01+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-09-26T14:15:01+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:507cd39c4ae8db1697c1c016c1b83f2dcdfe902d15754bd11d127b44ee5c60df",
+  "proof": "At default settings the detector finds at least 95 per cent of the anomalies injected into the 60 streams, at least 35 per cent of its flags lie next to an injected anomaly (about 20 per cent would by chance), and it flags no more than 15 per cent of all readings.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings the detector finds at least 95 per cent of the anomalies injected into the 60 streams, at least 35 per cent of its flags lie next to an injected anomaly (about 20 per cent would by chance), and it flags no more than 15 per cent of all readings.",
+    "notes": "Written by a sub-agent of the orchestrating Claude Code session. model_size 1 is a robust z-score, 2 and 3 are isolation forests of 100 and 400 trees; the data is synthetic, made by make_streams.py with a fixed seed."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 66.322,
+        "median": 65.978,
+        "p99": 73.239
+      },
+      "spread_std_over_mean": 0.027,
+      "measured_items": 66,
+      "measured_at_items_per_second": 8.066993949003209,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 110.1,
+      "seconds_inside_process": 4.359,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "window_length": {
+        "lowest_value": 256,
+        "highest_value": 16384,
+        "at_lowest_ms": 53.779,
+        "at_highest_ms": 127.081,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "model_size": {
+        "seen": "trial failed",
+        "failures": [
+          "anomaly-detector:overloaded"
+        ]
+      },
+      "threshold": {
+        "lowest_value": 2.0,
+        "highest_value": 6.0,
+        "at_lowest_ms": 62.834,
+        "at_highest_ms": 63.526,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "no effect on time"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 30.2,
+      "kept_up": true,
+      "processing_mean_ms": 68.535,
+      "processing_mean_ms_with_one_worker": 66.322
+    },
+    "flags": [],
+    "notes": [
+      "knob threshold has no effect on the processing time"
+    ],
+    "safe_rate_per_second": 7.9
+  }
+}

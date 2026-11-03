@@ -1,0 +1,144 @@
+nodes:
+  camera-01:
+    service: image-compressor v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552, 800]
+      encoding_quality: [50, 75, 90]
+      format: jpeg
+  camera-02:
+    service: image-compressor v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552, 800]
+      encoding_quality: [50, 75, 90]
+      format: jpeg
+  audio-03:
+    service: audio-features v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [2, 4, 6]
+      mel_bands: [20, 40, 64]
+      frame_ms: [20, 25, 40]
+  idx-04:
+    service: text-indexer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [10, 50, 100]
+      compression_level: [1, 6, 9]
+      ngram_size: [1, 2]
+  face-05:
+    service: face-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      model_size: [1, 2]
+  signer-06:
+    service: hash-signer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [1, 4, 16]
+      algorithm: [sha256, blake2b]
+      rounds: [1000, 3000, 10000]
+  cluster-07:
+    service: pc-clusterer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [10, 20, 30]
+      voxel_size: [0.5, 0.75, 1.0]
+      cluster_distance: 0.7
+  anomaly-08:
+    service: anomaly-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      model_size: 1
+      window_length: [512, 1024, 2048]
+      threshold: 3.5
+  camera-09:
+    service: image-compressor v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552, 800]
+      encoding_quality: [50, 75, 90]
+      format: jpeg
+  audio-10:
+    service: audio-features v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [2, 4, 6]
+      mel_bands: [20, 40, 64]
+      frame_ms: [20, 25, 40]
+  cluster-11:
+    service: pc-clusterer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [10, 20, 30]
+      voxel_size: [0.5, 0.75, 1.0]
+      cluster_distance: 0.7
+  idx-12:
+    service: text-indexer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [10, 50, 100]
+      compression_level: [1, 6, 9]
+      ngram_size: [1, 2]
+  idx-13:
+    service: text-indexer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [10, 50, 100]
+      compression_level: [1, 6, 9]
+      ngram_size: [1, 2]
+  camera-14:
+    service: image-compressor v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552, 800]
+      encoding_quality: [50, 75, 90]
+      format: jpeg
+  camera-15:
+    service: image-compressor v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552, 800]
+      encoding_quality: [50, 75, 90]
+      format: jpeg
+  signer-16:
+    service: hash-signer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [1, 4, 16]
+      algorithm: [sha256, blake2b]
+      rounds: [1000, 3000, 10000]
+  anomaly-17:
+    service: anomaly-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      model_size: 1
+      window_length: [512, 1024, 2048]
+      threshold: 3.5
+  cv-18:
+    service: cv-analyzer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      model_size: 1
+      data_quality: [128, 160]
+  qr-19:
+    service: qr-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552]
+  cv-20:
+    service: cv-analyzer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      model_size: 1
+      data_quality: [128, 160]
+edges: [camera-01 -> camera-02, camera-02 -> audio-03, audio-03 -> idx-04, idx-04 -> face-05, face-05 -> signer-06, signer-06 -> cluster-07, cluster-07
+    -> anomaly-08, anomaly-08 -> camera-09, camera-09 -> audio-10, audio-10 -> cluster-11, cluster-11 -> idx-12, idx-12 -> idx-13, idx-13 -> camera-14,
+  camera-14 -> camera-15, camera-15 -> signer-16, signer-16 -> anomaly-17, anomaly-17 -> cv-18, cv-18 -> qr-19, qr-19 -> cv-20]
+link: requests
+load:
+  rps: {from: 5, to: 30, step: 5}
+  burst_factor: [1, 2, 4]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 19, measure_seconds: 30, runs: 40, seed: 3200}

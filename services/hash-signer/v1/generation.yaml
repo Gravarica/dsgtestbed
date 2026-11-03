@@ -1,0 +1,10 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: For every one of the 30 payloads at default settings the output holds the payload's own SHA-256 digest
+  and a signature equal to an independent PBKDF2-HMAC computation over that digest with the shared key, all 30
+  signatures differ, and a different key gives a different signature.
+notes: Written by a sub-agent of the orchestrating Claude Code session, which ran the verification. Payloads are
+  generated from a fixed seed in init_worker, so there is nothing to fetch; rounds dominates the time, the
+  algorithm roughly triples it, and data_quality adds about 1 to 2 ms per megabyte.

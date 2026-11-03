@@ -1,0 +1,18 @@
+nodes:
+  qr:
+    service: qr-detector v1
+    cores: 2
+    knobs:
+      data_quality: 552
+  face:
+    service: face-detector v1
+    cores: 2
+    knobs:
+      model_size: 1
+edges:
+  - qr -> face
+load:
+  rps: 30                      # on qr only; every second qr tells face how many items it finished
+run:
+  warmup_seconds: 5
+  measure_seconds: 30

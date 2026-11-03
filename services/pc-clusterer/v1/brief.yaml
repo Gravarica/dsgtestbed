@@ -1,0 +1,12 @@
+name: pc-clusterer
+asked_by: ""
+date: 2026-09-26
+task: Downsample each lidar scan on a voxel grid, cluster the remaining points into objects, and return
+  one bounding box per object.
+data: {source: reuse, from: pc-visualizer/v1, files: KITTI raw 2011_09_26_drive_0001_sync scans
+  (CC BY-NC-SA 3.0), copied or fetched by prepare.sh}
+knobs:
+  - {name: data_quality, type: int, min: 6, max: 60, default: 30}
+  - {name: voxel_size, type: float, min: 0.05, max: 1.0, default: 0.2}
+  - {name: cluster_distance, type: float, min: 0.3, max: 2.0, default: 0.7}
+limits: {memory: 8g, packages: no PyTorch}

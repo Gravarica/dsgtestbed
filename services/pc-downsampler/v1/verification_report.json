@@ -1,0 +1,75 @@
+{
+  "service": "pc-downsampler:v1",
+  "status": "verified",
+  "verified_at": "2026-10-13T02:34:28+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-10-13T02:34:28+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:793a97a975906406505768c6e98169420d75d6c6aeb1fb5523d50fa4217d2a0d",
+  "proof": "At default settings every one of the 60 scans is thinned to exactly one point per occupied voxel, fewer than half of its points, and on the first scan the returned point of a sampled voxel is the centroid of the points of the scan that lie in it.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings every one of the 60 scans is thinned to exactly one point per occupied voxel, fewer than half of its points, and on the first scan the returned point of a sampled voxel is the centroid of the points of the scan that lie in it.",
+    "notes": "Written by a sub-agent of the orchestrating Claude Code session from the final brief, with no person involved. The scan is cut to data_quality metres once per worker; the voxel grid is the work per item, so the time follows the number of points within that distance, and voxel_size mainly changes how many points come out."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 8.212,
+        "median": 8.227,
+        "p99": 9.012
+      },
+      "spread_std_over_mean": 0.034,
+      "measured_items": 532,
+      "measured_at_items_per_second": 65.01986397053953,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 148.5,
+      "seconds_inside_process": 4.425,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 6,
+        "highest_value": 60,
+        "at_lowest_ms": 1.065,
+        "at_highest_ms": 8.857,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "voxel_size": {
+        "lowest_value": 0.05,
+        "highest_value": 1.0,
+        "at_lowest_ms": 10.584,
+        "at_highest_ms": 7.389,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher is faster"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 200.0,
+      "kept_up": true,
+      "processing_mean_ms": 9.178,
+      "processing_mean_ms_with_one_worker": 8.212
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 64.9
+  }
+}

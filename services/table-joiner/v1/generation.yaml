@@ -1,0 +1,10 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings, for every one of the 16 order batches, the per-group order counts, revenues and
+  mean orders equal an independent NumPy computation over the known customers, and the orders naming unknown
+  customers are dropped.
+notes: Written by a sub-agent of the orchestrating Claude Code session. The tables are generated in init_worker
+  from fixed seeds (about 0.75 s and 350 MB per worker at 1 000 000 rows); one item takes about 12 ms at default
+  and about 100 ms at the largest settings, and group_count moves the time less than data_quality.

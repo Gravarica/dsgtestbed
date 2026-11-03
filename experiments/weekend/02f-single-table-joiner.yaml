@@ -1,0 +1,13 @@
+nodes:
+  tables:
+    service: table-joiner v1
+    cores: {from: 1, to: 5}
+    parallelism: {from: 1, to: 4}
+    knobs:
+      data_quality: [1000, 3000, 10000, 30000, 100000, 300000, 1000000]
+      group_count: [10, 100, 1000, 10000, 100000]
+load:
+  rps: {from: 2, to: 100, step: 2}
+  burst_factor: [1, 2, 4, 8]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 5, measure_seconds: 30, runs: 60, repetitions: 3, repeated_share: 0.1, seed: 26}

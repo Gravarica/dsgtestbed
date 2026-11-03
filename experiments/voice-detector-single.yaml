@@ -1,0 +1,13 @@
+nodes:
+  voice-detector:
+    service: voice-detector v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      data_quality: 6
+      frame_length: 20
+load:
+  rps: 37.1
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

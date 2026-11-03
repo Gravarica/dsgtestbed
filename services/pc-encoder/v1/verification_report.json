@@ -1,0 +1,77 @@
+{
+  "service": "pc-encoder:v1",
+  "status": "verified",
+  "verified_at": "2026-10-13T02:45:48+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-10-13T02:45:48+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:78212319bae63be4fde97152c41ad1360d079bc9abbe2eb359304b757b9f748a",
+  "proof": "At default settings every one of the 60 scans decodes back to the same number of points, each within half a grid cell of its original on every axis, and the encoded bytes are more than three times smaller than the raw float32 coordinates.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings every one of the 60 scans decodes back to the same number of points, each within half a grid cell of its original on every axis, and the encoded bytes are more than three times smaller than the raw float32 coordinates.",
+    "notes": "Written by a sub-agent of the orchestrating Claude Code session from the final brief, with no person involved. Points are cut to the distance once per worker; per item the coordinates are quantised, ordered along a Morton curve, delta-encoded and packed with zlib. precision 1 to 4 means grid cells of 8, 4, 2 and 1 cm."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 17.222,
+        "median": 17.188,
+        "p99": 18.021
+      },
+      "spread_std_over_mean": 0.016,
+      "measured_items": 221,
+      "measured_at_items_per_second": 26.998830886973764,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 146.9,
+      "seconds_inside_process": 3.871,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 6,
+        "highest_value": 60,
+        "at_lowest_ms": 3.156,
+        "at_highest_ms": 18.737,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "precision": {
+        "lowest_value": 1,
+        "highest_value": 4,
+        "at_lowest_ms": 17.118,
+        "at_highest_ms": 18.487,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "no effect on time"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 116.1,
+      "kept_up": true,
+      "processing_mean_ms": 18.618,
+      "processing_mean_ms_with_one_worker": 17.222
+    },
+    "flags": [],
+    "notes": [
+      "knob precision has no effect on the processing time"
+    ],
+    "safe_rate_per_second": 27.2
+  }
+}

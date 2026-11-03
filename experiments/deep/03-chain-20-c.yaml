@@ -1,0 +1,141 @@
+nodes:
+  idx-01:
+    service: text-indexer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [10, 50, 100]
+      compression_level: [1, 6, 9]
+      ngram_size: [1, 2]
+  logs-02:
+    service: log-parser v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [100, 200, 500]
+      pattern_count: [5, 20, 50]
+  logs-03:
+    service: log-parser v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [100, 200, 500]
+      pattern_count: [5, 20, 50]
+  qr-04:
+    service: qr-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552]
+  tables-05:
+    service: table-joiner v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [1000, 3000, 10000]
+      group_count: [10, 100, 1000]
+  logs-06:
+    service: log-parser v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [100, 200, 500]
+      pattern_count: [5, 20, 50]
+  logs-07:
+    service: log-parser v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [100, 200, 500]
+      pattern_count: [5, 20, 50]
+  anomaly-08:
+    service: anomaly-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      model_size: 1
+      window_length: [512, 1024, 2048]
+      threshold: 3.5
+  camera-09:
+    service: image-compressor v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552, 800]
+      encoding_quality: [50, 75, 90]
+      format: jpeg
+  agg-10:
+    service: sensor-aggregator v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      window_length: [256, 512, 1024]
+      channels: [4, 8, 16]
+      feature_set: [basic, spectral]
+  cluster-11:
+    service: pc-clusterer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [10, 20, 30]
+      voxel_size: [0.5, 0.75, 1.0]
+      cluster_distance: 0.7
+  cluster-12:
+    service: pc-clusterer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [10, 20, 30]
+      voxel_size: [0.5, 0.75, 1.0]
+      cluster_distance: 0.7
+  anomaly-13:
+    service: anomaly-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      model_size: 1
+      window_length: [512, 1024, 2048]
+      threshold: 3.5
+  cluster-14:
+    service: pc-clusterer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [10, 20, 30]
+      voxel_size: [0.5, 0.75, 1.0]
+      cluster_distance: 0.7
+  anomaly-15:
+    service: anomaly-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      model_size: 1
+      window_length: [512, 1024, 2048]
+      threshold: 3.5
+  tables-16:
+    service: table-joiner v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [1000, 3000, 10000]
+      group_count: [10, 100, 1000]
+  audio-17:
+    service: audio-features v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [2, 4, 6]
+      mel_bands: [20, 40, 64]
+      frame_ms: [20, 25, 40]
+  camera-18:
+    service: image-compressor v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552, 800]
+      encoding_quality: [50, 75, 90]
+      format: jpeg
+  logs-19:
+    service: log-parser v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [100, 200, 500]
+      pattern_count: [5, 20, 50]
+  camera-20:
+    service: image-compressor v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552, 800]
+      encoding_quality: [50, 75, 90]
+      format: jpeg
+edges: [idx-01 -> logs-02, logs-02 -> logs-03, logs-03 -> qr-04, qr-04 -> tables-05, tables-05 -> logs-06, logs-06 -> logs-07, logs-07 -> anomaly-08,
+  anomaly-08 -> camera-09, camera-09 -> agg-10, agg-10 -> cluster-11, cluster-11 -> cluster-12, cluster-12 -> anomaly-13, anomaly-13 -> cluster-14,
+  cluster-14 -> anomaly-15, anomaly-15 -> tables-16, tables-16 -> audio-17, audio-17 -> camera-18, camera-18 -> logs-19, logs-19 -> camera-20]
+link: requests
+load:
+  rps: {from: 5, to: 30, step: 5}
+  burst_factor: [1, 2, 4]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 19, measure_seconds: 30, runs: 40, seed: 3202}

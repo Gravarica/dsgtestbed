@@ -1,0 +1,8 @@
+name: pc-visualizer
+version: v1
+service_type: elastic-workbench-pc-visualizer
+input: any
+output: image
+sample_count: 60
+knobs:
+  data_quality: {type: int, min: 6, max: 60, default: 30}

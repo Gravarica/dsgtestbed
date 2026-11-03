@@ -1,0 +1,24 @@
+nodes:
+  cleaner:
+    service: audio-denoiser v1
+    discipline: fifo
+    cores: {from: 1, to: 4}
+    parallelism: [1, 2, 3, 4]
+  voice:
+    service: voice-detector v1
+    discipline: fifo
+    cores: {from: 1, to: 4}
+    parallelism: [1, 2, 3, 4]
+  transcriber:
+    service: speech-transcriber v1
+    discipline: fifo
+    cores: {from: 1, to: 4}
+    parallelism: [1, 2, 3, 4]
+    knobs: {model_size: 1}
+edges: [cleaner -> voice, voice -> transcriber]
+link: requests
+shared_knobs:
+  data_quality: {from: 2, to: 12}
+load: {utilization: 0.5}
+run: {warmup_seconds: 10, measure_seconds: 30, measure_requests: 400, longest_measure_seconds: 180, probe_seconds: 8, queue_capacity: 1000000,
+  runs: 150, seed: 2042}

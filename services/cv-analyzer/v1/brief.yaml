@@ -1,0 +1,10 @@
+name: cv-analyzer
+asked_by: ""
+date: 2026-09-20
+task: Detect objects in each video frame with YOLOv10 and draw them on the frame. Ported from elastic-workbench CvAnalyzer_Yolo.
+data: {source: reuse, from: elastic-workbench, files: [CV_Video.mp4], models: exported by prepare.sh}
+knobs:
+  - {name: data_quality, type: int, min: 128, max: 320, default: 224, expect: higher takes longer}
+  - {name: model_size, type: int, min: 1, max: 4, default: 3, expect: higher takes longer}
+proof: At default settings at least one person is found in every sample frame.
+limits: {memory: 8g}

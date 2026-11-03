@@ -1,0 +1,11 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings every line of all sixty samples splits into header and content exactly as in
+  LogHub's labelled file, every matched line is rebuilt from its template and captured parameters, at least
+  75 per cent of lines get an event, and at least 97 per cent of lines whose LogHub event is loaded get that
+  same event.
+notes: Written by a sub-agent of the orchestrating Claude Code session from the weekend-batch brief. Templates
+  are tried most frequent first, so pattern_count raises the time mostly through lines that match late or not
+  at all; data_quality (lines per item) is the stronger knob, from about 0.4 ms to about 20 ms per item.

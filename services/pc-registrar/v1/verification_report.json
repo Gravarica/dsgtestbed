@@ -1,0 +1,75 @@
+{
+  "service": "pc-registrar:v1",
+  "status": "verified",
+  "verified_at": "2026-10-13T02:43:00+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-10-13T02:43:00+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:1b034e0f95412f703696f6a62f52649fdfa5e8bb0882dc21b13d4a622712925d",
+  "proof": "A real scan aligned with a copy of itself moved by a known turn of one degree and a known shift is found again within 0.05 degrees and 1 cm, and consecutive real scans at default settings give proper rotations with a median forward motion between 0.2 and 2 m and almost no sideways or vertical motion, as a driving car has.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "A real scan aligned with a copy of itself moved by a known turn of one degree and a known shift is found again within 0.05 degrees and 1 cm, and consecutive real scans at default settings give proper rotations with a median forward motion between 0.2 and 2 m and almost no sideways or vertical motion, as a driving car has.",
+    "notes": "Written by a sub-agent of the orchestrating Claude Code session from the final brief, with no person involved. A sample is the pair (scan i + 1, scan i); scans are cut to data_quality metres, lose their ground points and are thinned on a fixed 0.3 m grid before any item, and every item runs exactly `iterations` rounds of point-to-point ICP. About 42 ms per item at default settings and about 170 ms at the heaviest; at 6 m only a handful of points remain, so an item takes under 1 ms there."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 38.091,
+        "median": 38.038,
+        "p99": 42.378
+      },
+      "spread_std_over_mean": 0.056,
+      "measured_items": 106,
+      "measured_at_items_per_second": 12.966793561739111,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 90.9,
+      "seconds_inside_process": 4.039,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 6,
+        "highest_value": 60,
+        "at_lowest_ms": 1.004,
+        "at_highest_ms": 53.786,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "iterations": {
+        "lowest_value": 5,
+        "highest_value": 40,
+        "at_lowest_ms": 12.648,
+        "at_highest_ms": 95.263,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 52.5,
+      "kept_up": true,
+      "processing_mean_ms": 38.091,
+      "processing_mean_ms_with_one_worker": 38.091
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 13.3
+  }
+}

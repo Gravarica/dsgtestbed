@@ -1,0 +1,9 @@
+name: face-detector
+asked_by: ""
+date: 2026-09-20
+task: Detect faces in each video frame and draw boxes around them. Ported from the older elastic-workbench CvAnalyzer.
+data: {source: reuse, from: elastic-workbench, files: [CV_Video.mp4, pedestrian.jpg]}
+knobs:
+  - {name: model_size, type: int, min: 1, max: 2, default: 1, expect: higher takes longer}
+proof: In pedestrian.jpg the small model finds 9 faces and the large model finds 12.
+limits: {memory: 8g}

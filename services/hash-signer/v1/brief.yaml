@@ -1,0 +1,11 @@
+name: hash-signer
+asked_by: ""
+date: 2026-09-26
+task: Sign each payload by hashing it and deriving a key-stretched signature from the hash that a verifier
+  holding the same key could check.
+data: {source: generate, from: seeded random payloads of mixed content, created by prepare.sh or a small script}
+knobs:
+  - {name: data_quality, type: int, min: 1, max: 1024, default: 64}
+  - {name: algorithm, type: choice, values: [sha256, sha512, blake2b, sha3_256], default: sha256}
+  - {name: rounds, type: int, min: 1000, max: 200000, default: 20000}
+limits: {memory: 8g, packages: standard library only}

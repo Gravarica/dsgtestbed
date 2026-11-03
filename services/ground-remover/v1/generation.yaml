@@ -1,0 +1,12 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings, for every one of the 60 real scans the fitted plane is tilted less than 8 degrees
+  from horizontal and lies 1.4 to 2.0 m below the sensor (KITTI's Velodyne sits about 1.7 m above the road),
+  between 15 and 90 per cent of the points are removed, and every returned point lies more than 0.2 m above
+  the plane.
+notes: Written by a sub-agent of the orchestrating Claude Code session from the final brief, with no person
+  involved. RANSAC scores every one of the `attempts` candidate planes against all points of the scan and keeps
+  the best one that is flatter than 30 degrees, refined by a least-squares fit; the scan is cut to data_quality
+  metres once in init_worker, so the time per item grows with both knobs.

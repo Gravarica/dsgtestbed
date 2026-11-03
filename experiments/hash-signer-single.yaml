@@ -1,0 +1,14 @@
+nodes:
+  hash-signer:
+    service: hash-signer v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      data_quality: 64
+      algorithm: sha256
+      rounds: 20000
+load:
+  rps: 127.1
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

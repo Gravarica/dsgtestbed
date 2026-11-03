@@ -1,0 +1,75 @@
+{
+  "service": "audio-resampler:v1",
+  "status": "verified",
+  "verified_at": "2026-10-13T02:21:09+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-10-13T02:21:09+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:762abc8002369c79c173574e7ccabb193f4337c9b63a075f5570d1b634b4ac1a",
+  "proof": "At default settings every one of the 60 clips comes out with six seconds at 22050 Hz, without offset, at the target loudness of -23 dB over its loud blocks (or held at full scale), with less than a thousandth of its power above the band of the 16 kHz recording, and it correlates above 0.99 with the clip when brought back to 16 kHz by an independent FFT resampler.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings every one of the 60 clips comes out with six seconds at 22050 Hz, without offset, at the target loudness of -23 dB over its loud blocks (or held at full scale), with less than a thousandth of its power above the band of the 16 kHz recording, and it correlates above 0.99 with the clip when brought back to 16 kHz by an independent FFT resampler.",
+    "notes": "Written by a sub-agent of the orchestrating Claude Code session, from the application-batch brief. The choices of target_rate are written as quoted strings in brief and spec, because the contract compares a choice as text and refuses whole numbers. Polyphase resampling with a Kaiser low-pass designed once per worker; one item takes about 1.4 ms at default settings and about 5.6 ms at twelve seconds and 44100 Hz, linear in data_quality."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 1.916,
+        "median": 1.908,
+        "p99": 2.019
+      },
+      "spread_std_over_mean": 0.025,
+      "measured_items": 1636,
+      "measured_at_items_per_second": 199.9794046394002,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 119.1,
+      "seconds_inside_process": 3.237,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 2,
+        "highest_value": 12,
+        "at_lowest_ms": 0.58,
+        "at_highest_ms": 3.882,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "target_rate": {
+        "lowest_value": "8000",
+        "highest_value": "44100",
+        "at_lowest_ms": 1.283,
+        "at_highest_ms": 3.879,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 200.0,
+      "kept_up": true,
+      "processing_mean_ms": 1.967,
+      "processing_mean_ms_with_one_worker": 1.916
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 200.0
+  }
+}

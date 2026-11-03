@@ -1,0 +1,12 @@
+name: text-indexer
+asked_by: ""
+date: 2026-09-22
+task: Compress each text document and build a searchable term index for it.
+data: {source: download, from: Project Gutenberg plain-text books (public domain), fetched by prepare.sh}
+knobs:
+  - {name: data_quality, type: int, min: 10, max: 100, default: 50, expect: higher takes longer}
+  - {name: compression_level, type: int, min: 1, max: 9, default: 6, expect: higher takes longer}
+  - {name: ngram_size, type: int, min: 1, max: 3, default: 2, expect: higher takes longer}
+proof: At default settings every one of the 200 documents decompresses back to its own text with an
+  index that holds every word and word pair at every position, packed at least 2.5 times smaller.
+limits: {memory: 8g, packages: standard library only}

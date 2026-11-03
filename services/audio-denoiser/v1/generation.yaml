@@ -1,0 +1,12 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings each of the 60 clips, with white noise 5 dB below the clip added, comes out at least
+  3 dB closer to the clean recording than the noisy clip was, measured as signal-to-noise ratio against the clean
+  samples, with the same length and only finite values.
+notes: Written by a sub-agent of the orchestrating Claude Code session, from the application-batch brief. NumPy
+  only; spectral subtraction over a short-time Fourier transform of size resolution with a fixed hop of 8 ms, the
+  noise level of every frequency taken from the quietest fifth of the frames. One item takes about 16 ms at
+  default settings, 4 ms at the lightest and 65 ms at the heaviest; a steady tone counts as background and is
+  removed with the noise.

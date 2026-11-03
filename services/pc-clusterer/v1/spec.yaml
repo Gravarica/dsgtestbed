@@ -1,0 +1,10 @@
+name: pc-clusterer
+version: v1
+service_type: pc-clusterer
+input: any
+output: json
+sample_count: 60
+knobs:
+  data_quality: {type: int, min: 6, max: 60, default: 30}
+  voxel_size: {type: float, min: 0.05, max: 1.0, default: 0.2}
+  cluster_distance: {type: float, min: 0.3, max: 2.0, default: 0.7}

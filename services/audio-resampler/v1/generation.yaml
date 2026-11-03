@@ -1,0 +1,13 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings every one of the 60 clips comes out with six seconds at 22050 Hz, without offset, at
+  the target loudness of -23 dB over its loud blocks (or held at full scale), with less than a thousandth of its
+  power above the band of the 16 kHz recording, and it correlates above 0.99 with the clip when brought back to
+  16 kHz by an independent FFT resampler.
+notes: Written by a sub-agent of the orchestrating Claude Code session, from the application-batch brief. The
+  choices of target_rate are written as quoted strings in brief and spec, because the contract compares a choice
+  as text and refuses whole numbers. Polyphase resampling with a Kaiser low-pass designed once per worker; one
+  item takes about 1.4 ms at default settings and about 5.6 ms at twelve seconds and 44100 Hz, linear in
+  data_quality.

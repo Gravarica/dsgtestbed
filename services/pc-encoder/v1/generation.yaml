@@ -1,0 +1,10 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings every one of the 60 scans decodes back to the same number of points, each within half a
+  grid cell of its original on every axis, and the encoded bytes are more than three times smaller than the raw
+  float32 coordinates.
+notes: Written by a sub-agent of the orchestrating Claude Code session from the final brief, with no person
+  involved. Points are cut to the distance once per worker; per item the coordinates are quantised, ordered along
+  a Morton curve, delta-encoded and packed with zlib. precision 1 to 4 means grid cells of 8, 4, 2 and 1 cm.

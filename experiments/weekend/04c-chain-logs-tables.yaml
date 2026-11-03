@@ -1,0 +1,18 @@
+nodes:
+  logs:
+    service: log-parser v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {data_quality: {from: 100, to: 2000, step: 100}, pattern_count: [5, 20, 50, 100, 200]}
+  tables:
+    service: table-joiner v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {data_quality: [1000, 3000, 10000, 30000, 100000], group_count: [10, 100, 1000, 10000]}
+edges: [logs -> tables]
+link: requests
+load:
+  rps: {from: 5, to: 60, step: 5}
+  burst_factor: [1, 2, 4, 8]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 5, measure_seconds: 30, runs: 50, seed: 43}

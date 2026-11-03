@@ -1,0 +1,28 @@
+nodes:
+  camera:
+    service: image-compressor v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {data_quality: {from: 200, to: 1000, step: 100}, encoding_quality: {from: 10, to: 95, step: 5}, format: [jpeg, webp]}
+  qr:
+    service: qr-detector v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {data_quality: {from: 300, to: 800, step: 50}}
+  face:
+    service: face-detector v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {model_size: [1, 2]}
+  cv:
+    service: cv-analyzer v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {model_size: [1, 2], data_quality: [128, 160, 224, 256, 320]}
+edges: [camera -> qr, camera -> face, camera -> cv]
+link: requests
+load:
+  rps: {from: 2, to: 20, step: 2}
+  burst_factor: [1, 2, 4, 8]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 5, measure_seconds: 30, runs: 80, seed: 52}

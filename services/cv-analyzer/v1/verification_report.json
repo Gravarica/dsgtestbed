@@ -1,0 +1,84 @@
+{
+  "service": "cv-analyzer:v1",
+  "status": "verified",
+  "verified_at": "2026-09-20T19:38:47+00:00",
+  "verify_runs": 3,
+  "runs": [
+    {
+      "at": null,
+      "status": "not recorded",
+      "failed_checks": []
+    },
+    {
+      "at": null,
+      "status": "not recorded",
+      "failed_checks": []
+    },
+    {
+      "at": "2026-09-20T19:38:47+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:f6b5d6841d6246ea4518bc31529e24e7b734e3cda1b0ee4ce8ba60e062e1a8fb",
+  "proof": "At default settings at least one person is found in every sample frame.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "claude-fable-5-1",
+    "mode": "assisted",
+    "result": "verified",
+    "notes": "Ported from elastic-workbench, not generated from a brief."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 94.969,
+        "median": 94.904,
+        "p99": 95.848
+      },
+      "spread_std_over_mean": 0.004,
+      "measured_items": 41,
+      "measured_at_items_per_second": 5.011836659390346,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 648.5,
+      "seconds_inside_process": 3.892,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 128,
+        "highest_value": 320,
+        "at_lowest_ms": 35.604,
+        "at_highest_ms": 191.1,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "model_size": {
+        "lowest_value": 1,
+        "highest_value": 4,
+        "at_lowest_ms": 14.19,
+        "at_highest_ms": 187.541,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 21.1,
+      "kept_up": true,
+      "processing_mean_ms": 101.365,
+      "processing_mean_ms_with_one_worker": 94.969
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 5.2
+  }
+}

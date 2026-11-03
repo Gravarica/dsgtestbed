@@ -1,0 +1,11 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings, with two seeded one-second silences inserted into each of the 60 clips, the returned
+  stretches contain at least 95 per cent of the loud speech blocks found independently from the samples and no
+  time inside the inserted silences away from their edges.
+notes: Written by a sub-agent of the orchestrating Claude Code session, from the application-batch brief. NumPy
+  only; a likelihood-ratio detector with a noise estimate that follows the clip frame by frame, a loudness gate
+  and a spectral-flatness gate, then smoothing. One item takes about 8 ms at default settings, 3 ms at 2 seconds
+  and 28 ms at 12 seconds with 10 ms frames; prepare.sh copies the clips from speech-transcriber v1 when present.

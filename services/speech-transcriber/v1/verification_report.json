@@ -1,0 +1,84 @@
+{
+  "service": "speech-transcriber:v1",
+  "status": "verified",
+  "verified_at": "2026-09-20T19:41:40+00:00",
+  "verify_runs": 3,
+  "runs": [
+    {
+      "at": null,
+      "status": "not recorded",
+      "failed_checks": []
+    },
+    {
+      "at": null,
+      "status": "not recorded",
+      "failed_checks": []
+    },
+    {
+      "at": "2026-09-20T19:41:40+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:1197e6a52fdc801c327255f76fea0328c6f27ae1f1c2de7ec8a4d8a451eac769",
+  "proof": "At default settings every sample clip yields at least five words and the transcript matches the start of the reference transcript with a word error rate below 25 per cent.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "notes": "The clips and the two Vosk models are fetched into fetched/ by prepare.sh, so build the image only after just prepare. data_quality is the number of seconds of each clip that are transcribed, which is why only recordings of at least twelve seconds are kept as samples."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 621.314,
+        "median": 616.638,
+        "p99": 720.062
+      },
+      "spread_std_over_mean": 0.065,
+      "measured_items": 30,
+      "measured_at_items_per_second": 0.983686191708825,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 241.1,
+      "seconds_inside_process": 17.981,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.801
+    },
+    "knobs": {
+      "model_size": {
+        "lowest_value": 1,
+        "highest_value": 2,
+        "at_lowest_ms": 607.787,
+        "at_highest_ms": 2721.58,
+        "items_measured": [
+          30,
+          30
+        ],
+        "seen": "higher takes longer"
+      },
+      "data_quality": {
+        "lowest_value": 2,
+        "highest_value": 12,
+        "at_lowest_ms": 335.651,
+        "at_highest_ms": 943.734,
+        "items_measured": [
+          30,
+          30
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 3.2,
+      "kept_up": true,
+      "processing_mean_ms": 659.62,
+      "processing_mean_ms_with_one_worker": 621.314
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 1.0
+  }
+}

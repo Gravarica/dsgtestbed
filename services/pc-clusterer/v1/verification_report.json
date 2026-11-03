@@ -1,0 +1,86 @@
+{
+  "service": "pc-clusterer:v1",
+  "status": "verified",
+  "verified_at": "2026-09-26T14:31:03+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-09-26T14:31:03+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:480b5a22acc93db85b25368409f85576740703c71e630fc749f0a252622fe615",
+  "proof": "On the first real scan at default settings every pair of points closer than the cluster distance shares an object, members of an object are farther than that distance from all other points, and the scan yields between 5 and 2000 well-formed boxes.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "On the first real scan at default settings every pair of points closer than the cluster distance shares an object, members of an object are farther than that distance from all other points, and the scan yields between 5 and 2000 well-formed boxes.",
+    "notes": "Written by a sub-agent of the orchestrating Claude Code session from the final brief, with no person involved. Ground points (z below -1.4 m) are removed before clustering; the heaviest settings (60 m, voxel 0.05, distance 2.0) cost about 0.65 s per item because the number of close pairs grows fast."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 12.934,
+        "median": 12.919,
+        "p99": 14.246
+      },
+      "spread_std_over_mean": 0.05,
+      "measured_items": 278,
+      "measured_at_items_per_second": 34.0110244460184,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 83.4,
+      "seconds_inside_process": 3.683,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 6,
+        "highest_value": 60,
+        "at_lowest_ms": 0.401,
+        "at_highest_ms": 16.054,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "voxel_size": {
+        "lowest_value": 0.05,
+        "highest_value": 1.0,
+        "at_lowest_ms": 139.596,
+        "at_highest_ms": 1.166,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher is faster"
+      },
+      "cluster_distance": {
+        "lowest_value": 0.3,
+        "highest_value": 2.0,
+        "at_lowest_ms": 5.855,
+        "at_highest_ms": 59.182,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 154.6,
+      "kept_up": true,
+      "processing_mean_ms": 14.55,
+      "processing_mean_ms_with_one_worker": 12.934
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 34.3
+  }
+}

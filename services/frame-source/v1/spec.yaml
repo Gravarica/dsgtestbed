@@ -1,0 +1,8 @@
+name: frame-source
+version: v1
+service_type: frame-source
+input: any
+output: json
+sample_count: 60
+knobs:
+  checksum: {type: choice, values: [crc32, adler32], default: crc32}

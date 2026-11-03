@@ -1,0 +1,9 @@
+name: speech-transcriber
+version: v1
+service_type: speech-transcriber
+input: any
+output: text
+sample_count: 60
+knobs:
+  model_size: {type: int, min: 1, max: 2, default: 1}
+  data_quality: {type: int, min: 2, max: 12, default: 6}

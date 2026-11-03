@@ -1,0 +1,23 @@
+nodes:
+  qr:
+    service: qr-detector v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {data_quality: {from: 300, to: 800, step: 50}}
+  cv:
+    service: cv-analyzer v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {model_size: [1, 2], data_quality: [128, 160, 224, 256, 320]}
+  face:
+    service: face-detector v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {model_size: [1, 2]}
+edges: [qr -> cv, cv -> face]
+link: requests
+load:
+  rps: {from: 4, to: 20, step: 2}
+  pattern: [bursty, diurnal]
+  trace_speed: 12
+run: {warmup_seconds: 5, measure_seconds: 120, runs: 40, seed: 82}

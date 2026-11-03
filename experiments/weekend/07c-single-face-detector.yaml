@@ -1,0 +1,12 @@
+nodes:
+  face:
+    service: face-detector v1
+    cores: {from: 1, to: 5}
+    parallelism: {from: 1, to: 4}
+    knobs:
+      model_size: [1, 2]
+load:
+  rps: {from: 5, to: 150, step: 5}
+  burst_factor: [1, 2, 4, 8]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 5, measure_seconds: 30, runs: 55, repetitions: 3, repeated_share: 0.1, seed: 73}

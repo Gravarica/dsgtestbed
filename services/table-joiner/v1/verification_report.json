@@ -1,0 +1,75 @@
+{
+  "service": "table-joiner:v1",
+  "status": "verified",
+  "verified_at": "2026-09-26T14:28:23+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-09-26T14:28:23+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:c35146d2e18ac41717489c3920dd39827a5c03232a3def90218e0e9a9c3a86ad",
+  "proof": "At default settings, for every one of the 16 order batches, the per-group order counts, revenues and mean orders equal an independent NumPy computation over the known customers, and the orders naming unknown customers are dropped.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings, for every one of the 16 order batches, the per-group order counts, revenues and mean orders equal an independent NumPy computation over the known customers, and the orders naming unknown customers are dropped.",
+    "notes": "Written by a sub-agent of the orchestrating Claude Code session. The tables are generated in init_worker from fixed seeds (about 0.75 s and 350 MB per worker at 1 000 000 rows); one item takes about 12 ms at default and about 100 ms at the largest settings, and group_count moves the time less than data_quality."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 12.804,
+        "median": 12.648,
+        "p99": 15.18
+      },
+      "spread_std_over_mean": 0.054,
+      "measured_items": 278,
+      "measured_at_items_per_second": 33.99335820746208,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 118.2,
+      "seconds_inside_process": 3.674,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 1000,
+        "highest_value": 1000000,
+        "at_lowest_ms": 5.02,
+        "at_highest_ms": 70.909,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "group_count": {
+        "lowest_value": 10,
+        "highest_value": 100000,
+        "at_lowest_ms": 12.684,
+        "at_highest_ms": 19.238,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 156.2,
+      "kept_up": true,
+      "processing_mean_ms": 16.222,
+      "processing_mean_ms_with_one_worker": 12.804
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 33.5
+  }
+}

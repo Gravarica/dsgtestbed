@@ -1,0 +1,12 @@
+nodes:
+  qr:
+    service: qr-detector v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      data_quality: 552        # frame height in pixels
+load:
+  rps: 40
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

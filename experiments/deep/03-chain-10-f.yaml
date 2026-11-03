@@ -1,0 +1,71 @@
+nodes:
+  cv-01:
+    service: cv-analyzer v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      model_size: 1
+      data_quality: [128, 160]
+  qr-02:
+    service: qr-detector v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [300, 552]
+  anomaly-03:
+    service: anomaly-detector v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      model_size: 1
+      window_length: [512, 1024, 2048]
+      threshold: 3.5
+  cluster-04:
+    service: pc-clusterer v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [10, 20, 30]
+      voxel_size: [0.5, 0.75, 1.0]
+      cluster_distance: 0.7
+  signer-05:
+    service: hash-signer v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [1, 4, 16]
+      algorithm: [sha256, blake2b]
+      rounds: [1000, 3000, 10000]
+  face-06:
+    service: face-detector v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      model_size: [1, 2]
+  qr-07:
+    service: qr-detector v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [300, 552]
+  audio-08:
+    service: audio-features v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [2, 4, 6]
+      mel_bands: [20, 40, 64]
+      frame_ms: [20, 25, 40]
+  agg-09:
+    service: sensor-aggregator v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      window_length: [256, 512, 1024]
+      channels: [4, 8, 16]
+      feature_set: [basic, spectral]
+  logs-10:
+    service: log-parser v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [100, 200, 500]
+      pattern_count: [5, 20, 50]
+edges: [cv-01 -> qr-02, qr-02 -> anomaly-03, anomaly-03 -> cluster-04, cluster-04 -> signer-05, signer-05 -> face-06, face-06 -> qr-07, qr-07
+    -> audio-08, audio-08 -> agg-09, agg-09 -> logs-10]
+link: requests
+load:
+  rps: {from: 5, to: 30, step: 5}
+  burst_factor: [1, 2, 4]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 12, measure_seconds: 30, runs: 40, seed: 3105}

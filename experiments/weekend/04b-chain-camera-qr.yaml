@@ -1,0 +1,18 @@
+nodes:
+  camera:
+    service: image-compressor v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {data_quality: {from: 200, to: 1000, step: 100}, encoding_quality: {from: 10, to: 95, step: 5}, format: [jpeg, webp]}
+  qr:
+    service: qr-detector v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {data_quality: {from: 300, to: 800, step: 50}}
+edges: [camera -> qr]
+link: requests
+load:
+  rps: {from: 5, to: 60, step: 5}
+  burst_factor: [1, 2, 4, 8]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 5, measure_seconds: 30, runs: 50, seed: 42}

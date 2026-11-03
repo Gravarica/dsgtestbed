@@ -1,0 +1,9 @@
+name: audio-denoiser
+version: v1
+service_type: audio-denoiser
+input: any
+output: audio
+sample_count: 60
+knobs:
+  data_quality: {type: int, min: 2, max: 12, default: 6}
+  resolution: {type: choice, values: ["512", "1024", "2048"], default: "1024"}

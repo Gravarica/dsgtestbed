@@ -1,0 +1,10 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings the detector finds at least 95 per cent of the anomalies injected into the 60
+  streams, at least 35 per cent of its flags lie next to an injected anomaly (about 20 per cent would by
+  chance), and it flags no more than 15 per cent of all readings.
+notes: Written by a sub-agent of the orchestrating Claude Code session. model_size 1 is a robust z-score, 2 and
+  3 are isolation forests of 100 and 400 trees; the data is synthetic, made by make_streams.py with a fixed
+  seed.

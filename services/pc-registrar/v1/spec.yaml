@@ -1,0 +1,9 @@
+name: pc-registrar
+version: v1
+service_type: pc-registrar
+input: any
+output: json
+sample_count: 60
+knobs:
+  data_quality: {type: int, min: 6, max: 60, default: 30}
+  iterations: {type: int, min: 5, max: 40, default: 15}

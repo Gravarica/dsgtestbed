@@ -1,0 +1,93 @@
+{
+  "service": "audio-features:v1",
+  "status": "verified",
+  "verified_at": "2026-09-26T14:35:04+00:00",
+  "verify_runs": 2,
+  "runs": [
+    {
+      "at": "2026-09-26T14:31:02+00:00",
+      "status": "failed",
+      "failed_checks": [
+        "spec.yaml can be read"
+      ]
+    },
+    {
+      "at": "2026-09-26T14:35:04+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:e9bf0a6eca1bbf887875e33c103240965f8390e13a5ab3c1693f19a2a3a0010b",
+  "proof": "At default settings every one of the 60 clips yields a finite matrix of the expected frames by 64 log-mel plus 13 MFCC columns whose per-frame mel energy correlates above 0.95 with the frame energy computed independently from the samples, with more than 80 per cent of the energy below 4 kHz as speech has.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings every one of the 60 clips yields a finite matrix of the expected frames by 64 log-mel plus 13 MFCC columns whose per-frame mel energy correlates above 0.95 with the frame energy computed independently from the samples, with more than 80 per cent of the energy below 4 kHz as speech has.",
+    "notes": "Written by a sub-agent of the orchestrating Claude Code session, from the weekend-batch brief. NumPy only (FFT, mel filter bank, DCT); one item takes about 2.3 ms at default settings and about 22 ms at the heaviest, and prepare.sh copies the clips from speech-transcriber v1 when they are there. The brief first named the frame length window_ms, a harness knob name the contract forbids; the first verify refused it, and the brief, spec, service and tests were renamed to frame_ms before the second verify."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 2.3,
+        "median": 2.214,
+        "p99": 4.322
+      },
+      "spread_std_over_mean": 0.148,
+      "measured_items": 1146,
+      "measured_at_items_per_second": 140.0827408903572,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 93.3,
+      "seconds_inside_process": 2.738,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 1,
+        "highest_value": 12,
+        "at_lowest_ms": 0.698,
+        "at_highest_ms": 3.892,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "mel_bands": {
+        "lowest_value": 20,
+        "highest_value": 256,
+        "at_lowest_ms": 3.524,
+        "at_highest_ms": 4.718,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "frame_ms": {
+        "lowest_value": 10,
+        "highest_value": 100,
+        "at_lowest_ms": 1.285,
+        "at_highest_ms": 7.763,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 200.0,
+      "kept_up": true,
+      "processing_mean_ms": 2.737,
+      "processing_mean_ms_with_one_worker": 2.3
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 139.9
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "service": "image-transformer:v1",
+  "status": "verified",
+  "verified_at": "2026-10-13T02:04:38+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-10-13T02:04:38+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:3bdf92e1450642e34bb3bdc1e36e2f9f9ebe3d0c77723c6569261a991c64c5ca",
+  "proof": "At default settings every one of the 30 frames comes out at 320 pixels height and the source's aspect ratio, still shows the source frame (correlation above 0.85 with a plain resize), and has its three colour channels balanced to within 2 grey levels, which the plainly resized frame does not have.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings every one of the 30 frames comes out at 320 pixels height and the source's aspect ratio, still shows the source frame (correlation above 0.85 with a plain resize), and has its three colour channels balanced to within 2 grey levels, which the plainly resized frame does not have.",
+    "notes": "Written by a sub-agent of the orchestrating Claude Code session from the application-batch brief. The 1920x1080 source frames stay at full size in the worker, so resizing is done for every item; one item takes about 5 ms (resize), 12 ms (colour) and 32 ms (geometric, Lanczos remap and warp) at 320 px, and 9, 37 and 112 ms at 640 px."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 11.17,
+        "median": 11.152,
+        "p99": 11.782
+      },
+      "spread_std_over_mean": 0.01,
+      "measured_items": 344,
+      "measured_at_items_per_second": 42.04201023821113,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 294.6,
+      "seconds_inside_process": 3.92,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 160,
+        "highest_value": 640,
+        "at_lowest_ms": 8.008,
+        "at_highest_ms": 42.26,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "correction": {
+        "lowest_value": "resize",
+        "highest_value": "geometric",
+        "at_lowest_ms": 8.753,
+        "at_highest_ms": 30.937,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 179.1,
+      "kept_up": true,
+      "processing_mean_ms": 12.593,
+      "processing_mean_ms_with_one_worker": 11.17
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 42.3
+  }
+}

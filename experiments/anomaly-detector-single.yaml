@@ -1,0 +1,14 @@
+nodes:
+  anomaly-detector:
+    service: anomaly-detector v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      window_length: 2048
+      model_size: 2
+      threshold: 3.5
+load:
+  rps: 7.9
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

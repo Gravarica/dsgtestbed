@@ -1,0 +1,25 @@
+nodes:
+  faces:
+    service: face-detector v2
+    discipline: fifo
+    cores_beyond_the_workers: 0.5
+    parallelism: [1, 2, 3, 4]
+    knobs:
+      model_size: [1, 2]
+  transformer:
+    service: image-transformer v1
+    discipline: fifo
+    cores_beyond_the_workers: 0.5
+    parallelism: [1, 2, 3, 4]
+  edges:
+    service: edge-detector v1
+    discipline: fifo
+    cores_beyond_the_workers: 0.5
+    parallelism: [1, 2, 3, 4]
+edges: [faces -> transformer, transformer -> edges]
+link: requests
+shared_knobs:
+  data_quality: {from: 160, to: 640, step: 32}
+load: {utilization: 0.5}
+run: {warmup_seconds: 10, measure_seconds: 30, measure_requests: 400, longest_measure_seconds: 180, probe_seconds: 8, queue_capacity: 1000000,
+  runs: 50, seed: 1027}

@@ -1,0 +1,65 @@
+{
+  "service": "cv-analyzer:v2",
+  "status": "verified",
+  "verified_at": "2026-10-13T02:18:06+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-10-13T02:18:06+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:c5882b744951909c51155f1f0559ca7782285a25e6669c0d43f3866255132b37",
+  "proof": "At default settings (frame height 320, YOLOv10 small) at least five people are found in every one of the 60 sample frames, and every returned box lies inside the frame with a score above the confidence threshold.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings (frame height 320, YOLOv10 small) at least five people are found in every one of the 60 sample frames, and every returned box lies inside the frame with a score above the confidence threshold.",
+    "notes": "Written by a sub-agent of the orchestrating Claude Code session, from the application-batch brief. Same models and video as v1; data_quality is rounded to the nearest multiple of 32 and the service returns the detections as records instead of a drawn frame. One item takes about 76 ms at default settings with one thread, from 7 ms (nano, 160) to about 1.65 s (large, 640)."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 73.81,
+        "median": 73.883,
+        "p99": 74.305
+      },
+      "spread_std_over_mean": 0.004,
+      "measured_items": 57,
+      "measured_at_items_per_second": 6.9700223536479555,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 550.6,
+      "seconds_inside_process": 4.21,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.02
+    },
+    "knobs": {
+      "data_quality": {
+        "seen": "trial failed",
+        "failures": [
+          "cv-analyzer:overloaded"
+        ]
+      },
+      "model_size": {
+        "seen": "trial failed",
+        "failures": [
+          "cv-analyzer:overloaded"
+        ]
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 27.1,
+      "kept_up": true,
+      "processing_mean_ms": 82.91,
+      "processing_mean_ms_with_one_worker": 73.81
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 6.8
+  }
+}

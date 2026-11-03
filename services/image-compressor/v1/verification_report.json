@@ -1,0 +1,86 @@
+{
+  "service": "image-compressor:v1",
+  "status": "verified",
+  "verified_at": "2026-09-26T14:18:49+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-09-26T14:18:49+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:a50cc90d02f171a6cea2596d699a7ad8d4cc0183300a8324ceae737c8f5d6fda",
+  "proof": "At default settings every one of the 60 frames encodes to a JPEG that decodes back to the frame's size, is more than five times smaller than the raw pixels, and keeps a PSNR above 30 dB.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings every one of the 60 frames encodes to a JPEG that decodes back to the frame's size, is more than five times smaller than the raw pixels, and keeps a PSNR above 30 dB.",
+    "notes": "Written by a sub-agent of the orchestrating session from the weekend-batch brief. Time depends mostly on format (jpeg about 1 ms, webp about 20 ms, png 16 to 420 ms at 552 px, where encoding_quality sets the PNG compression level 1 to 9)."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 1.028,
+        "median": 0.922,
+        "p99": 1.838
+      },
+      "spread_std_over_mean": 0.259,
+      "measured_items": 1635,
+      "measured_at_items_per_second": 200.03629948003206,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 601.0,
+      "seconds_inside_process": 1.75,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 100,
+        "highest_value": 1000,
+        "at_lowest_ms": 0.093,
+        "at_highest_ms": 3.689,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "encoding_quality": {
+        "lowest_value": 10,
+        "highest_value": 95,
+        "at_lowest_ms": 0.766,
+        "at_highest_ms": 1.329,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "format": {
+        "lowest_value": "jpeg",
+        "highest_value": "png",
+        "at_lowest_ms": 1.248,
+        "at_highest_ms": 89.53,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 200.0,
+      "kept_up": true,
+      "processing_mean_ms": 0.967,
+      "processing_mean_ms_with_one_worker": 1.028
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 200.0
+  }
+}

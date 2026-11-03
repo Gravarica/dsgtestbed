@@ -1,0 +1,11 @@
+name: log-parser
+asked_by: ""
+date: 2026-09-26
+task: Parse a block of raw log lines into structured events by matching each line against a set of log
+  templates, and count the events per template.
+data: {source: download, from: LogHub sample logs (public, e.g. the 2k-line samples of Apache, HDFS,
+  Linux, OpenSSH), fetched by prepare.sh, licence stated in data/README.md}
+knobs:
+  - {name: data_quality, type: int, min: 100, max: 2000, default: 500}
+  - {name: pattern_count, type: int, min: 5, max: 200, default: 50}
+limits: {memory: 8g, packages: no PyTorch}

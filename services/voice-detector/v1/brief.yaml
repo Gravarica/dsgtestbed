@@ -1,0 +1,10 @@
+name: voice-detector
+asked_by: ""
+date: 2026-10-12
+task: Find the stretches of each audio clip in which somebody speaks and return their start and end times.
+data: {source: reuse, from: speech-transcriber/v1, files: LibriSpeech dev-clean clips of at least 12 seconds
+  (CC BY 4.0); copied or fetched by prepare.sh}
+knobs:
+  - {name: data_quality, type: int, min: 2, max: 12, default: 6}
+  - {name: frame_length, type: int, min: 10, max: 30, default: 20}
+limits: {memory: 8g, packages: no PyTorch}

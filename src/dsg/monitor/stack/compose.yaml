@@ -1,0 +1,41 @@
+name: dsg-monitor
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: dsg-prometheus
+    network_mode: host
+    cpuset: "${DSG_INFRASTRUCTURE_CPUSET:-0-1}"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --web.listen-address=127.0.0.1:${DSG_PROMETHEUS_PORT:-19090}
+      - --web.enable-admin-api
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: dsg-cadvisor
+    cpuset: "${DSG_INFRASTRUCTURE_CPUSET:-0-1}"
+    ports:
+      - "127.0.0.1:${DSG_CADVISOR_PORT:-18090}:8080"
+    command:
+      - --housekeeping_interval=1s
+      - --docker_only=true
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+
+  grafana:
+    image: grafana/grafana
+    container_name: dsg-grafana
+    network_mode: host
+    cpuset: "${DSG_INFRASTRUCTURE_CPUSET:-0-1}"
+    environment:
+      - GF_SERVER_HTTP_ADDR=127.0.0.1
+      - GF_SERVER_HTTP_PORT=${DSG_GRAFANA_PORT:-13000}
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=adminadmin
+    volumes:
+      - ./grafana-datasource.yml:/etc/grafana/provisioning/datasources/prometheus.yml:ro

@@ -1,0 +1,23 @@
+nodes:
+  downsampler:
+    service: pc-downsampler v1
+    discipline: fifo
+    cores_beyond_the_workers: 0.5
+    parallelism: [1, 2, 3, 4]
+  ground:
+    service: ground-remover v1
+    discipline: fifo
+    cores_beyond_the_workers: 0.5
+    parallelism: [1, 2, 3, 4]
+  clusterer:
+    service: pc-clusterer v1
+    discipline: fifo
+    cores_beyond_the_workers: 0.5
+    parallelism: [1, 2, 3, 4]
+edges: [downsampler -> ground, ground -> clusterer]
+link: requests
+shared_knobs:
+  data_quality: {from: 6, to: 40, step: 2}
+load: {utilization: 0.5}
+run: {warmup_seconds: 10, measure_seconds: 30, measure_requests: 400, longest_measure_seconds: 180, probe_seconds: 8, queue_capacity: 1000000,
+  runs: 50, seed: 3017}

@@ -1,0 +1,62 @@
+nodes:
+  anomaly-root-1-1:
+    service: anomaly-detector v1
+    rps: {from: 2, to: 20, step: 2}
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      model_size: 1
+      window_length: [512, 1024, 2048]
+      threshold: 3.5
+  audio-root-1-2:
+    service: audio-features v1
+    rps: {from: 2, to: 20, step: 2}
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [2, 4, 6]
+      mel_bands: [20, 40, 64]
+      frame_ms: [20, 25, 40]
+  camera-root-2-1:
+    service: image-compressor v1
+    rps: {from: 2, to: 20, step: 2}
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [300, 552, 800]
+      encoding_quality: [50, 75, 90]
+      format: jpeg
+  cluster-root-2-2:
+    service: pc-clusterer v1
+    rps: {from: 2, to: 20, step: 2}
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      data_quality: [10, 20, 30]
+      voxel_size: [0.5, 0.75, 1.0]
+      cluster_distance: 0.7
+  agg-root-1:
+    service: sensor-aggregator v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      window_length: [256, 512, 1024]
+      channels: [4, 8, 16]
+      feature_set: [basic, spectral]
+  agg-root-2:
+    service: sensor-aggregator v1
+    cores: {from: 0.5, to: 1.5, step: 0.25}
+    knobs:
+      window_length: [256, 512, 1024]
+      channels: [4, 8, 16]
+      feature_set: [basic, spectral]
+  agg-root:
+    service: sensor-aggregator v1
+    cores: {from: 1, to: 2, step: 0.5}
+    parallelism: 2
+    knobs:
+      window_length: [256, 512, 1024]
+      channels: [4, 8, 16]
+      feature_set: [basic, spectral]
+edges: [agg-root-1 -> agg-root, agg-root-2 -> agg-root, anomaly-root-1-1 -> agg-root-1, audio-root-1-2 -> agg-root-1, camera-root-2-1 -> agg-root-2,
+  cluster-root-2-2 -> agg-root-2]
+link: requests
+load:
+  burst_factor: [1, 2, 4]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 7, measure_seconds: 30, runs: 100, seed: 2000}

@@ -1,0 +1,14 @@
+nodes:
+  audio:
+    service: audio-features v1
+    cores: {from: 1, to: 5}
+    parallelism: {from: 1, to: 4}
+    knobs:
+      data_quality: {from: 1, to: 12}
+      mel_bands: [20, 32, 64, 128, 256]
+      frame_ms: {from: 10, to: 100, step: 10}
+load:
+  rps: {from: 10, to: 300, step: 10}
+  burst_factor: [1, 2, 4, 8]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 5, measure_seconds: 30, runs: 60, repetitions: 3, repeated_share: 0.1, seed: 27}

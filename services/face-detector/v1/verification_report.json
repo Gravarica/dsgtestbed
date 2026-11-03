@@ -1,0 +1,73 @@
+{
+  "service": "face-detector:v1",
+  "status": "verified",
+  "verified_at": "2026-09-20T19:35:01+00:00",
+  "verify_runs": 3,
+  "runs": [
+    {
+      "at": null,
+      "status": "not recorded",
+      "failed_checks": []
+    },
+    {
+      "at": null,
+      "status": "not recorded",
+      "failed_checks": []
+    },
+    {
+      "at": "2026-09-20T19:35:01+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:21ff108e5fc166936fe00a73e22132414be125eea78b6e56073cff789a70690b",
+  "proof": "In pedestrian.jpg the small model finds 9 faces and the large model finds 12.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "claude-fable-5-1",
+    "mode": "assisted",
+    "result": "verified",
+    "notes": "Ported from elastic-workbench, not generated from a brief."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 3.409,
+        "median": 3.338,
+        "p99": 5.233
+      },
+      "spread_std_over_mean": 0.099,
+      "measured_items": 1006,
+      "measured_at_items_per_second": 123.0101114940149,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 300.1,
+      "seconds_inside_process": 3.506,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "model_size": {
+        "lowest_value": 1,
+        "highest_value": 2,
+        "at_lowest_ms": 4.425,
+        "at_highest_ms": 15.265,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 200.0,
+      "kept_up": true,
+      "processing_mean_ms": 6.598,
+      "processing_mean_ms_with_one_worker": 3.409
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 122.8
+  }
+}

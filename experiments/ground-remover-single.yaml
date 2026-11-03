@@ -1,0 +1,13 @@
+nodes:
+  ground-remover:
+    service: ground-remover v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      data_quality: 30
+      attempts: 100
+load:
+  rps: 10.9
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

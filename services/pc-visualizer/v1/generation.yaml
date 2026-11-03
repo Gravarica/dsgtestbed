@@ -1,0 +1,5 @@
+tool: Claude Code
+model: claude-fable-5-1
+mode: assisted
+result: verified
+notes: Ported from elastic-workbench, not generated from a brief.

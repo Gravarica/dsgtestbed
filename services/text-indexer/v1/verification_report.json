@@ -1,0 +1,91 @@
+{
+  "service": "text-indexer:v1",
+  "status": "verified",
+  "verified_at": "2026-09-22T10:01:54+00:00",
+  "verify_runs": 2,
+  "runs": [
+    {
+      "at": "2026-09-22T09:58:19+00:00",
+      "status": "verified",
+      "failed_checks": []
+    },
+    {
+      "at": "2026-09-22T10:01:54+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:1a3c319d71313fbcb22a1350bac2206eb8882ebf428c4d65fc801764ae8d8813",
+  "proof": "Every one of the 200 documents at default settings decompresses back to its own text with a term index that holds every word and word pair at exactly the positions where they occur, and the record is packed at least 2.5 times smaller than its JSON form.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "Every one of the 200 documents at default settings decompresses back to its own text with a term index that holds every word and word pair at exactly the positions where they occur, and the record is packed at least 2.5 times smaller than its JSON form.",
+    "notes": "One item takes about 1.3 ms, so this is a cheap service, good for high rates; all three knobs move the time. The documents are cut at a character count, so at data_quality below 100 the last word of a document can be cut in half. That is deliberate and deterministic."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 1.308,
+        "median": 1.28,
+        "p99": 1.72
+      },
+      "spread_std_over_mean": 0.155,
+      "measured_items": 1637,
+      "measured_at_items_per_second": 200.0117337366215,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 55.9,
+      "seconds_inside_process": 2.27,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 10,
+        "highest_value": 100,
+        "at_lowest_ms": 0.271,
+        "at_highest_ms": 2.8,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "compression_level": {
+        "lowest_value": 1,
+        "highest_value": 9,
+        "at_lowest_ms": 1.052,
+        "at_highest_ms": 2.188,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "ngram_size": {
+        "lowest_value": 1,
+        "highest_value": 3,
+        "at_lowest_ms": 0.664,
+        "at_highest_ms": 3.24,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 200.0,
+      "kept_up": true,
+      "processing_mean_ms": 1.456,
+      "processing_mean_ms_with_one_worker": 1.308
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 200.0
+  }
+}

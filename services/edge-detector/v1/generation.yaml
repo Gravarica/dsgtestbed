@@ -1,0 +1,6 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings every one of the 60 frames yields at least five contours whose boxes lie inside the frame and whose polygon corners sit where the brightness, computed independently from the raw pixels, changes more than three times as steeply as on average over the frame.
+notes: Written by a sub-agent of the orchestrating session from the application-batch brief. Smoothing is an edge-keeping (bilateral) filter whose kernel is the knob, with even values rounded up to the next odd size; one item takes about 2.5 ms at default settings, 0.9 ms at 160 px and about 40 ms at 640 px with the largest kernel.

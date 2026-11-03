@@ -1,0 +1,8 @@
+name: face-detector
+version: v1
+service_type: elastic-workbench-cv-analyzer
+input: any
+output: image
+sample_count: 30
+knobs:
+  model_size: {type: int, min: 1, max: 2, default: 1}

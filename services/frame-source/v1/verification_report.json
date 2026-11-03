@@ -1,0 +1,76 @@
+{
+  "service": "frame-source:v1",
+  "status": "verified",
+  "verified_at": "2026-10-22T10:28:24+00:00",
+  "verify_runs": 3,
+  "runs": [
+    {
+      "at": "2026-10-22T10:25:40+00:00",
+      "status": "failed",
+      "failed_checks": [
+        "only the service folder was changed"
+      ]
+    },
+    {
+      "at": "2026-10-22T10:26:14+00:00",
+      "status": "verified",
+      "failed_checks": []
+    },
+    {
+      "at": "2026-10-22T10:28:24+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:1e8a335b8f62faf1b842e5539eaa1d1a5ea2ba10368492e8ed3e801adb22b418",
+  "proof": "For each of the 60 video frames at 640 pixels height the output holds its frame number, its size and a checksum equal to zlib.crc32 of its pixels; all 60 checksums differ and flipping one bit of a frame changes it.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "assisted",
+    "result": "verified",
+    "proof": "For each of the 60 video frames at 640 pixels height the output holds its frame number, its size and a checksum equal to zlib.crc32 of its pixels; all 60 checksums differ and flipping one bit of a frame changes it.",
+    "notes": "The camera at the root of the B3 map-reduce trees; it fans every frame out to all leaves at once. About 0.5 ms per frame, so it adds almost nothing to the end-to-end latency; it has no data_quality knob on purpose, so the shared quality of a run does not change it."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 0.367,
+        "median": 0.352,
+        "p99": 0.697
+      },
+      "spread_std_over_mean": 0.182,
+      "measured_items": 1636,
+      "measured_at_items_per_second": 199.95491214730444,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 597.2,
+      "seconds_inside_process": 0.624,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "checksum": {
+        "lowest_value": "crc32",
+        "highest_value": "adler32",
+        "at_lowest_ms": 0.351,
+        "at_highest_ms": 0.76,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 200.0,
+      "kept_up": true,
+      "processing_mean_ms": 0.646,
+      "processing_mean_ms_with_one_worker": 0.367
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 200.0
+  }
+}

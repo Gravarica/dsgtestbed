@@ -1,0 +1,9 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings every one of the 60 clips is encoded to a FLAC file that is smaller than its raw
+  16-bit samples and decodes back to exactly the same samples.
+notes: Written by a sub-agent of the orchestrating Claude Code session, from the application-batch brief.
+  Encoding happens in memory with libsndfile through soundfile; data_quality is the number of seconds of each
+  clip that is encoded, and ogg (Vorbis, lossy) takes several times longer than flac (lossless).

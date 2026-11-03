@@ -1,0 +1,127 @@
+nodes:
+  camera: {service: frame-source v1, discipline: fifo, cores: 1.0, auto_cores: false, parallelism: 1}
+  leaf-1:
+    service: cv-analyzer v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  leaf-2:
+    service: face-detector v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  leaf-3:
+    service: cv-analyzer v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  leaf-4:
+    service: face-detector v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  leaf-5:
+    service: cv-analyzer v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  leaf-6:
+    service: face-detector v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  leaf-7:
+    service: cv-analyzer v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  leaf-8:
+    service: face-detector v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  leaf-9:
+    service: cv-analyzer v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  leaf-10:
+    service: face-detector v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  leaf-11:
+    service: cv-analyzer v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  leaf-12:
+    service: face-detector v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  leaf-13:
+    service: cv-analyzer v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  leaf-14:
+    service: face-detector v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  leaf-15:
+    service: cv-analyzer v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  leaf-16:
+    service: face-detector v2
+    discipline: fifo
+    cores: 1.5
+    parallelism: 1
+    knobs:
+      model_size: [1, 2]
+  merge: {service: image-transformer v1, discipline: fifo, cores: 2.5, parallelism: 1}
+edges: [camera -> leaf-1, camera -> leaf-2, camera -> leaf-3, camera -> leaf-4, camera -> leaf-5, camera -> leaf-6, camera -> leaf-7, camera ->
+    leaf-8, camera -> leaf-9, camera -> leaf-10, camera -> leaf-11, camera -> leaf-12, camera -> leaf-13, camera -> leaf-14, camera -> leaf-15,
+  camera -> leaf-16, leaf-1 -> merge, leaf-2 -> merge, leaf-3 -> merge, leaf-4 -> merge, leaf-5 -> merge, leaf-6 -> merge, leaf-7 -> merge, leaf-8
+    -> merge, leaf-9 -> merge, leaf-10 -> merge, leaf-11 -> merge, leaf-12 -> merge, leaf-13 -> merge, leaf-14 -> merge, leaf-15 -> merge, leaf-16
+    -> merge]
+link: requests
+fan_in: join
+shared_knobs:
+  data_quality: {from: 160, to: 256, step: 32}
+load: {utilization: 0.5}
+run: {warmup_seconds: 10, measure_seconds: 30, measure_requests: 1000, longest_measure_seconds: 900, probe_seconds: 8, cpu_slack: 1.15, cap_cores_at_the_probe: true,
+  queue_capacity: 1000000, runs: 50, seed: 4000}

@@ -1,0 +1,9 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: assisted
+result: verified
+proof: For each of the 60 video frames at 640 pixels height the output holds its frame number, its size and a
+  checksum equal to zlib.crc32 of its pixels; all 60 checksums differ and flipping one bit of a frame changes it.
+notes: The camera at the root of the B3 map-reduce trees; it fans every frame out to all leaves at once. About
+  0.5 ms per frame, so it adds almost nothing to the end-to-end latency; it has no data_quality knob on purpose,
+  so the shared quality of a run does not change it.

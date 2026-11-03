@@ -1,0 +1,14 @@
+nodes:
+  text-indexer:
+    service: text-indexer v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      data_quality: 50
+      compression_level: 6
+      ngram_size: 2
+load:
+  rps: 198.6
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

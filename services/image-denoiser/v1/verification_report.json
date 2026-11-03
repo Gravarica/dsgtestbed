@@ -1,0 +1,75 @@
+{
+  "service": "image-denoiser:v1",
+  "status": "verified",
+  "verified_at": "2026-10-13T02:09:57+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-10-13T02:09:57+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:7d6821488050de570039f00457bfd11f0bee58c97574fbd6664194993c9e5a31",
+  "proof": "At default settings every one of the 60 cleaned frames is more than 3 dB closer (PSNR) to the noise-free frame than the noisy frame it was made from, while keeping more than 80 per cent of the contrast at the strong edges of the noise-free frame.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings every one of the 60 cleaned frames is more than 3 dB closer (PSNR) to the noise-free frame than the noisy frame it was made from, while keeping more than 80 per cent of the contrast at the strong edges of the noise-free frame.",
+    "notes": "Written by a sub-agent of the orchestrating session from the application-batch brief. Bilateral filter whose neighbourhood grows with strength (5 to 13 pixels); every worker adds seeded Gaussian noise to the resized frames when it starts. One item takes about 6 ms at default settings, 1.4 to 22 ms over the data_quality range and about 80 ms at the heaviest settings."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 5.642,
+        "median": 5.646,
+        "p99": 5.768
+      },
+      "spread_std_over_mean": 0.009,
+      "measured_items": 727,
+      "measured_at_items_per_second": 88.91234436484677,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 161.8,
+      "seconds_inside_process": 4.188,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 160,
+        "highest_value": 640,
+        "at_lowest_ms": 1.446,
+        "at_highest_ms": 22.106,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "strength": {
+        "lowest_value": 1,
+        "highest_value": 5,
+        "at_lowest_ms": 1.551,
+        "at_highest_ms": 19.636,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 200.0,
+      "kept_up": true,
+      "processing_mean_ms": 5.735,
+      "processing_mean_ms_with_one_worker": 5.642
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 88.9
+  }
+}

@@ -1,0 +1,13 @@
+nodes:
+  image-denoiser:
+    service: image-denoiser v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      data_quality: 320
+      strength: 2
+load:
+  rps: 88.9
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

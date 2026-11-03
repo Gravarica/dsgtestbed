@@ -1,0 +1,10 @@
+name: anomaly-detector
+version: v1
+service_type: anomaly-detector
+input: any
+output: json
+sample_count: 60
+knobs:
+  window_length: {type: int, min: 256, max: 16384, default: 2048}
+  model_size: {type: int, min: 1, max: 3, default: 2}
+  threshold: {type: float, min: 2.0, max: 6.0, default: 3.5}

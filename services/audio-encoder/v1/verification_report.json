@@ -1,0 +1,75 @@
+{
+  "service": "audio-encoder:v1",
+  "status": "verified",
+  "verified_at": "2026-10-13T02:31:49+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-10-13T02:31:49+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:7b63fb1044dc1f64e3a31d9d1613914da7b368da526959126bf374acb592dcc2",
+  "proof": "At default settings every one of the 60 clips is encoded to a FLAC file that is smaller than its raw 16-bit samples and decodes back to exactly the same samples.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings every one of the 60 clips is encoded to a FLAC file that is smaller than its raw 16-bit samples and decodes back to exactly the same samples.",
+    "notes": "Written by a sub-agent of the orchestrating Claude Code session, from the application-batch brief. Encoding happens in memory with libsndfile through soundfile; data_quality is the number of seconds of each clip that is encoded, and ogg (Vorbis, lossy) takes several times longer than flac (lossless)."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 4.487,
+        "median": 4.484,
+        "p99": 4.788
+      },
+      "spread_std_over_mean": 0.016,
+      "measured_items": 868,
+      "measured_at_items_per_second": 106.08403474041829,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 76.0,
+      "seconds_inside_process": 3.977,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 2,
+        "highest_value": 12,
+        "at_lowest_ms": 1.573,
+        "at_highest_ms": 8.924,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "format": {
+        "lowest_value": "flac",
+        "highest_value": "ogg",
+        "at_lowest_ms": 4.535,
+        "at_highest_ms": 9.134,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 200.0,
+      "kept_up": true,
+      "processing_mean_ms": 4.535,
+      "processing_mean_ms_with_one_worker": 4.487
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 106.2
+  }
+}

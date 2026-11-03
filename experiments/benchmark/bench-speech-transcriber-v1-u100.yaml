@@ -1,0 +1,13 @@
+nodes:
+  service:
+    service: speech-transcriber v1
+    discipline: fifo
+    cores: 8
+    parallelism: 1
+    knobs:
+      data_quality: {from: 2, to: 12}
+      model_size: 1
+link: requests
+load: {utilization: 1.0}
+run: {warmup_seconds: 10, measure_seconds: 30, measure_requests: 400, longest_measure_seconds: 180, probe_seconds: 8, cpu_slack: 1.15, queue_capacity: 1000000,
+  runs: 10, seed: 1500}

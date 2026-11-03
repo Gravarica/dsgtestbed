@@ -1,0 +1,73 @@
+{
+  "service": "pc-visualizer:v1",
+  "status": "verified",
+  "verified_at": "2026-09-20T19:36:55+00:00",
+  "verify_runs": 3,
+  "runs": [
+    {
+      "at": null,
+      "status": "not recorded",
+      "failed_checks": []
+    },
+    {
+      "at": null,
+      "status": "not recorded",
+      "failed_checks": []
+    },
+    {
+      "at": "2026-09-20T19:36:55+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:7218ab99f2ea878279c883c2b2583e061e790e8e8c5c3709a61a1b4aaba02a3c",
+  "proof": "The real scans load, each has four values per point, and the view of the first scan contains points.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "claude-fable-5-1",
+    "mode": "assisted",
+    "result": "verified",
+    "notes": "Ported from elastic-workbench, not generated from a brief."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 3.152,
+        "median": 3.117,
+        "p99": 4.771
+      },
+      "spread_std_over_mean": 0.075,
+      "measured_items": 875,
+      "measured_at_items_per_second": 107.04681965168083,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 179.0,
+      "seconds_inside_process": 2.851,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 6,
+        "highest_value": 60,
+        "at_lowest_ms": 1.081,
+        "at_highest_ms": 2.704,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 200.0,
+      "kept_up": true,
+      "processing_mean_ms": 3.287,
+      "processing_mean_ms_with_one_worker": 3.152
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 106.7
+  }
+}

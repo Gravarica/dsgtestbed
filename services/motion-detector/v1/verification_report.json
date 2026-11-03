@@ -1,0 +1,75 @@
+{
+  "service": "motion-detector:v1",
+  "status": "verified",
+  "verified_at": "2026-10-13T02:12:46+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-10-13T02:12:46+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:b62ba80ea6929e4ad3f6885d5ec1131eec528a93ed3ee1931aa7611dc4d9c9dd",
+  "proof": "At default settings every sample frame compared with itself gives no region, and compared with a copy of itself shifted sideways by five per cent of its width it gives regions that contain more than ninety per cent of the clearly changed pixels.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings every sample frame compared with itself gives no region, and compared with a copy of itself shifted sideways by five per cent of its width it gives regions that contain more than ninety per cent of the clearly changed pixels.",
+    "notes": "Written by a sub-agent of the orchestrating session from the application-batch brief. A sample is the pair (frame, frame before it), so nothing is remembered between items; difference is cheap, optical_flow (dense Farneback flow) costs many times more."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 1.805,
+        "median": 1.798,
+        "p99": 2.576
+      },
+      "spread_std_over_mean": 0.053,
+      "measured_items": 1636,
+      "measured_at_items_per_second": 200.04928216511726,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 120.1,
+      "seconds_inside_process": 3.064,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 160,
+        "highest_value": 640,
+        "at_lowest_ms": 0.792,
+        "at_highest_ms": 5.829,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "method": {
+        "lowest_value": "difference",
+        "highest_value": "optical_flow",
+        "at_lowest_ms": 1.831,
+        "at_highest_ms": 25.848,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 200.0,
+      "kept_up": true,
+      "processing_mean_ms": 1.921,
+      "processing_mean_ms_with_one_worker": 1.805
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 200.0
+  }
+}

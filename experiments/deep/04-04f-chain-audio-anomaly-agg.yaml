@@ -1,0 +1,23 @@
+nodes:
+  audio:
+    service: audio-features v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {data_quality: {from: 1, to: 12}, mel_bands: [20, 40, 64, 128], frame_ms: {from: 10, to: 100, step: 10}}
+  anomaly:
+    service: anomaly-detector v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {window_length: [256, 512, 1024, 2048, 4096], model_size: [1, 2], threshold: {from: 2.0, to: 6.0, step: 0.5}}
+  agg:
+    service: sensor-aggregator v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {window_length: [256, 512, 1024, 2048, 4096], channels: [4, 8, 16, 32, 64], feature_set: [basic, spectral, full]}
+edges: [audio -> anomaly, anomaly -> agg]
+link: requests
+load:
+  rps: {from: 2, to: 12, step: 2}
+  burst_factor: [1, 2, 4, 8]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 5, measure_seconds: 30, runs: 25, seed: 146}

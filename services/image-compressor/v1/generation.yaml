@@ -1,0 +1,6 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings every one of the 60 frames encodes to a JPEG that decodes back to the frame's size, is more than five times smaller than the raw pixels, and keeps a PSNR above 30 dB.
+notes: Written by a sub-agent of the orchestrating session from the weekend-batch brief. Time depends mostly on format (jpeg about 1 ms, webp about 20 ms, png 16 to 420 ms at 552 px, where encoding_quality sets the PNG compression level 1 to 9).

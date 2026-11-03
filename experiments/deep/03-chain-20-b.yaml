@@ -1,0 +1,133 @@
+nodes:
+  lidar-01:
+    service: pc-visualizer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [6, 30, 60]
+  face-02:
+    service: face-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      model_size: [1, 2]
+  audio-03:
+    service: audio-features v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [2, 4, 6]
+      mel_bands: [20, 40, 64]
+      frame_ms: [20, 25, 40]
+  signer-04:
+    service: hash-signer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [1, 4, 16]
+      algorithm: [sha256, blake2b]
+      rounds: [1000, 3000, 10000]
+  idx-05:
+    service: text-indexer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [10, 50, 100]
+      compression_level: [1, 6, 9]
+      ngram_size: [1, 2]
+  qr-06:
+    service: qr-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552]
+  audio-07:
+    service: audio-features v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [2, 4, 6]
+      mel_bands: [20, 40, 64]
+      frame_ms: [20, 25, 40]
+  lidar-08:
+    service: pc-visualizer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [6, 30, 60]
+  cv-09:
+    service: cv-analyzer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      model_size: 1
+      data_quality: [128, 160]
+  tables-10:
+    service: table-joiner v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [1000, 3000, 10000]
+      group_count: [10, 100, 1000]
+  agg-11:
+    service: sensor-aggregator v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      window_length: [256, 512, 1024]
+      channels: [4, 8, 16]
+      feature_set: [basic, spectral]
+  lidar-12:
+    service: pc-visualizer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [6, 30, 60]
+  tables-13:
+    service: table-joiner v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [1000, 3000, 10000]
+      group_count: [10, 100, 1000]
+  signer-14:
+    service: hash-signer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [1, 4, 16]
+      algorithm: [sha256, blake2b]
+      rounds: [1000, 3000, 10000]
+  logs-15:
+    service: log-parser v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [100, 200, 500]
+      pattern_count: [5, 20, 50]
+  audio-16:
+    service: audio-features v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [2, 4, 6]
+      mel_bands: [20, 40, 64]
+      frame_ms: [20, 25, 40]
+  camera-17:
+    service: image-compressor v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552, 800]
+      encoding_quality: [50, 75, 90]
+      format: jpeg
+  anomaly-18:
+    service: anomaly-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      model_size: 1
+      window_length: [512, 1024, 2048]
+      threshold: 3.5
+  face-19:
+    service: face-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      model_size: [1, 2]
+  cv-20:
+    service: cv-analyzer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      model_size: 1
+      data_quality: [128, 160]
+edges: [lidar-01 -> face-02, face-02 -> audio-03, audio-03 -> signer-04, signer-04 -> idx-05, idx-05 -> qr-06, qr-06 -> audio-07, audio-07 ->
+    lidar-08, lidar-08 -> cv-09, cv-09 -> tables-10, tables-10 -> agg-11, agg-11 -> lidar-12, lidar-12 -> tables-13, tables-13 -> signer-14, signer-14
+    -> logs-15, logs-15 -> audio-16, audio-16 -> camera-17, camera-17 -> anomaly-18, anomaly-18 -> face-19, face-19 -> cv-20]
+link: requests
+load:
+  rps: {from: 5, to: 30, step: 5}
+  burst_factor: [1, 2, 4]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 19, measure_seconds: 30, runs: 40, seed: 3201}

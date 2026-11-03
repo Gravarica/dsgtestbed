@@ -1,0 +1,12 @@
+nodes:
+  face:
+    service: face-detector v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      model_size: 1            # 1 or 2: face model with 320 or 640 pixel input
+load:
+  rps: 100
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

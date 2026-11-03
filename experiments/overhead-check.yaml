@@ -1,0 +1,13 @@
+nodes:
+  qr:
+    service: qr-detector v1
+    cores: 5
+    parallelism: 4
+    discipline: fifo
+    knobs:
+      data_quality: 552
+load:
+  rps: [1, 40, 150]
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

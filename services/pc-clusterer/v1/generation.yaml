@@ -1,0 +1,10 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: On the first real scan at default settings every pair of points closer than the cluster distance shares an
+  object, members of an object are farther than that distance from all other points, and the scan yields between
+  5 and 2000 well-formed boxes.
+notes: Written by a sub-agent of the orchestrating Claude Code session from the final brief, with no person
+  involved. Ground points (z below -1.4 m) are removed before clustering; the heaviest settings (60 m, voxel 0.05,
+  distance 2.0) cost about 0.65 s per item because the number of close pairs grows fast.

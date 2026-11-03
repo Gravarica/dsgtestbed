@@ -1,0 +1,9 @@
+name: ground-remover
+version: v1
+service_type: ground-remover
+input: any
+output: points
+sample_count: 60
+knobs:
+  data_quality: {type: int, min: 6, max: 60, default: 30}
+  attempts: {type: int, min: 20, max: 400, default: 100}

@@ -1,0 +1,9 @@
+name: pitch-tracker
+version: v1
+service_type: pitch-tracker
+input: any
+output: pitch
+sample_count: 60
+knobs:
+  data_quality: {type: int, min: 2, max: 12, default: 6}
+  hop_length: {type: int, min: 5, max: 40, default: 10}

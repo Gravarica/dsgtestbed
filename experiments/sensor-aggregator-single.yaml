@@ -1,0 +1,14 @@
+nodes:
+  sensor-aggregator:
+    service: sensor-aggregator v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      window_length: 1024
+      channels: 16
+      feature_set: basic
+load:
+  rps: 128.1
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

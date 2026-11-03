@@ -1,0 +1,13 @@
+nodes:
+  log-parser:
+    service: log-parser v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      data_quality: 500
+      pattern_count: 50
+load:
+  rps: 140.3
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

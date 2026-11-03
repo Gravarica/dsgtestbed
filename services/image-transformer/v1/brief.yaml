@@ -1,0 +1,10 @@
+name: image-transformer
+asked_by: ""
+date: 2026-10-12
+task: Transform each camera frame for the next stage, resizing it to the frame height, correcting its colours
+  and applying a geometric correction, and return the transformed frame.
+data: {source: reuse, from: qr-detector/v1, files: [QR_Video.mp4]}
+knobs:
+  - {name: data_quality, type: int, min: 160, max: 640, default: 320}
+  - {name: correction, type: choice, values: [resize, colour, geometric], default: colour}
+limits: {memory: 8g, packages: no PyTorch}

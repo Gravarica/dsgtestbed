@@ -1,0 +1,10 @@
+nodes:
+  qr:
+    service: qr-detector v1
+    cores: [2, 3, 5]
+    parallelism: [1, 2, 4]
+    knobs:
+      data_quality: [300, 552, 800]
+load:
+  rps: [20, 40, 80]
+run: {warmup_seconds: 10, measure_seconds: 60, runs: 24, seed: 1}

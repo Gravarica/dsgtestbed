@@ -1,0 +1,10 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings every one of the 30 frames comes out at 320 pixels height and the source's aspect ratio,
+  still shows the source frame (correlation above 0.85 with a plain resize), and has its three colour channels
+  balanced to within 2 grey levels, which the plainly resized frame does not have.
+notes: Written by a sub-agent of the orchestrating Claude Code session from the application-batch brief. The
+  1920x1080 source frames stay at full size in the worker, so resizing is done for every item; one item takes about
+  5 ms (resize), 12 ms (colour) and 32 ms (geometric, Lanczos remap and warp) at 320 px, and 9, 37 and 112 ms at 640 px.

@@ -1,0 +1,12 @@
+nodes:
+  idx:
+    service: text-indexer v1
+    cores: [2, 3, 5]
+    parallelism: [1, 2, 4]
+    knobs:
+      data_quality: [10, 50, 100]
+      compression_level: [1, 6, 9]
+      ngram_size: [1, 2, 3]
+load:
+  rps: [100, 300, 600]
+run: {warmup_seconds: 10, measure_seconds: 60, runs: 24, seed: 6}

@@ -1,0 +1,14 @@
+nodes:
+  pc-clusterer:
+    service: pc-clusterer v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      data_quality: 30
+      voxel_size: 0.2
+      cluster_distance: 0.7
+load:
+  rps: 34.3
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

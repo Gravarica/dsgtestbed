@@ -1,0 +1,10 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings (frame height 320, YOLOv10 small) at least five people are found in every one of the
+  60 sample frames, and every returned box lies inside the frame with a score above the confidence threshold.
+notes: Written by a sub-agent of the orchestrating Claude Code session, from the application-batch brief. Same
+  models and video as v1; data_quality is rounded to the nearest multiple of 32 and the service returns the
+  detections as records instead of a drawn frame. One item takes about 76 ms at default settings with one
+  thread, from 7 ms (nano, 160) to about 1.65 s (large, 640).

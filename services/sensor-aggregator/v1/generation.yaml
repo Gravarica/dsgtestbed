@@ -1,0 +1,10 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings, for all 40 windows and 16 channels, every statistic equals an independent
+  recomputation on the raw readings, and each channel's mean lies where its known generating level puts it and
+  each vibration channel's spread matches its known amplitude and noise within 10 per cent.
+notes: Written by a sub-agent of the orchestrating Claude Code session from the weekend-batch brief. About 1.9 ms
+  per item at defaults, 64 ms at window 8192 x 64 channels x full; time grows with window_length x channels,
+  feature_set adds a smaller step.

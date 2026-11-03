@@ -1,0 +1,13 @@
+nodes:
+  signer:
+    service: hash-signer v1
+    cores: {from: 2, to: 4}
+    parallelism: [1, 2]
+    knobs:
+      data_quality: [1, 4, 16, 64, 256, 1024]
+      algorithm: [sha256, sha512, blake2b, sha3_256]
+      rounds: [1000, 3000, 10000, 30000, 100000, 200000]
+load:
+  rps: {from: 5, to: 100.0, step: 5}
+  burst_factor: 1
+run: {warmup_seconds: 5, measure_seconds: 30, runs: 3, repetitions: 5, seed: 225}

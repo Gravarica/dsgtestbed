@@ -1,0 +1,6 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings every one of the 60 cleaned frames is more than 3 dB closer (PSNR) to the noise-free frame than the noisy frame it was made from, while keeping more than 80 per cent of the contrast at the strong edges of the noise-free frame.
+notes: Written by a sub-agent of the orchestrating session from the application-batch brief. Bilateral filter whose neighbourhood grows with strength (5 to 13 pixels); every worker adds seeded Gaussian noise to the resized frames when it starts. One item takes about 6 ms at default settings, 1.4 to 22 ms over the data_quality range and about 80 ms at the heaviest settings.

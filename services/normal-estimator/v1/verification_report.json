@@ -1,0 +1,75 @@
+{
+  "service": "normal-estimator:v1",
+  "status": "verified",
+  "verified_at": "2026-10-13T02:39:59+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-10-13T02:39:59+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:471f486ed3a0de15cc94dbd9b6d1b0503089c66a338beee23927c6f8108c5f1e",
+  "proof": "At default settings the normals of a synthetic tilted plane match its known normal, and on three real scans every point gets a unit normal that faces the sensor, with the normals of the ground points near the car pointing upward (median alignment above 0.95).",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings the normals of a synthetic tilted plane match its known normal, and on three real scans every point gets a unit normal that faces the sensor, with the normals of the ground points near the car pointing upward (median alignment above 0.95).",
+    "notes": "Written by a sub-agent of the orchestrating Claude Code session from the final brief, with no person involved. Every worker thins each scan to one point per 0.3 m voxel within data_quality metres when it starts; the neighbour search and the plane fit per point are the measured work."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 38.89,
+        "median": 38.909,
+        "p99": 41.139
+      },
+      "spread_std_over_mean": 0.031,
+      "measured_items": 106,
+      "measured_at_items_per_second": 12.95804648860689,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 105.5,
+      "seconds_inside_process": 4.153,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 6,
+        "highest_value": 60,
+        "at_lowest_ms": 1.756,
+        "at_highest_ms": 51.904,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "neighbours": {
+        "lowest_value": 5,
+        "highest_value": 40,
+        "at_lowest_ms": 28.654,
+        "at_highest_ms": 93.215,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 51.4,
+      "kept_up": true,
+      "processing_mean_ms": 39.84,
+      "processing_mean_ms_with_one_worker": 38.89
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 12.7
+  }
+}

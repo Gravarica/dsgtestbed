@@ -1,0 +1,13 @@
+nodes:
+  pitch-tracker:
+    service: pitch-tracker v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      data_quality: 6
+      hop_length: 10
+load:
+  rps: 29.6
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

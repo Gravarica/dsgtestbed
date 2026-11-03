@@ -1,0 +1,9 @@
+name: image-denoiser
+asked_by: ""
+date: 2026-10-12
+task: Remove the noise from each camera frame while keeping its edges, and return the cleaned frame.
+data: {source: reuse, from: qr-detector/v1, files: [QR_Video.mp4]}
+knobs:
+  - {name: data_quality, type: int, min: 160, max: 640, default: 320}
+  - {name: strength, type: int, min: 1, max: 5, default: 2}
+limits: {memory: 8g, packages: no PyTorch}

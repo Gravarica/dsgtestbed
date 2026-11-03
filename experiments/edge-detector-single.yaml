@@ -1,0 +1,13 @@
+nodes:
+  edge-detector:
+    service: edge-detector v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      data_quality: 320
+      smoothing: 5
+load:
+  rps: 182.8
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

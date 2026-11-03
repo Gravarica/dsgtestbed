@@ -1,0 +1,10 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings synthetic voices of 90, 140, 220 and 330 Hz are tracked within 2 per cent in every
+  frame and a glide from 100 to 300 Hz within 4 per cent, and each of the 60 clips yields one value per frame
+  with 15 to 95 per cent of its frames voiced and a median pitch between 75 and 300 Hz, as a speaking voice has.
+notes: Written by a sub-agent of the orchestrating Claude Code session, from the application-batch brief. NumPy
+  only, autocorrelation of 40 ms frames through the FFT; an unvoiced frame is returned as 0 Hz. prepare.sh copies
+  the clips from speech-transcriber v1 when they are there.

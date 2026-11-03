@@ -1,0 +1,10 @@
+name: audio-denoiser
+asked_by: ""
+date: 2026-10-12
+task: Suppress the background noise in each audio clip and return the cleaned samples.
+data: {source: reuse, from: speech-transcriber/v1, files: LibriSpeech dev-clean clips of at least 12 seconds
+  (CC BY 4.0); copied or fetched by prepare.sh}
+knobs:
+  - {name: data_quality, type: int, min: 2, max: 12, default: 6}
+  - {name: resolution, type: choice, values: ["512", "1024", "2048"], default: "1024"}
+limits: {memory: 8g, packages: no PyTorch}

@@ -1,0 +1,75 @@
+{
+  "service": "edge-detector:v1",
+  "status": "verified",
+  "verified_at": "2026-10-13T02:07:17+00:00",
+  "verify_runs": 1,
+  "runs": [
+    {
+      "at": "2026-10-13T02:07:17+00:00",
+      "status": "verified",
+      "failed_checks": []
+    }
+  ],
+  "image_id": "sha256:fac3ac5a7ad7ecbd3282da03d006abe9232d4775e81c4869a6934e5982209927",
+  "proof": "At default settings every one of the 60 frames yields at least five contours whose boxes lie inside the frame and whose polygon corners sit where the brightness, computed independently from the raw pixels, changes more than three times as steeply as on average over the frame.",
+  "generation": {
+    "tool": "Claude Code",
+    "model": "Claude Opus 5.5 (1M context)",
+    "mode": "autonomous",
+    "result": "verified",
+    "proof": "At default settings every one of the 60 frames yields at least five contours whose boxes lie inside the frame and whose polygon corners sit where the brightness, computed independently from the raw pixels, changes more than three times as steeply as on average over the frame.",
+    "notes": "Written by a sub-agent of the orchestrating session from the application-batch brief. Smoothing is an edge-keeping (bilateral) filter whose kernel is the knob, with even values rounded up to the next odd size; one item takes about 2.5 ms at default settings, 0.9 ms at 160 px and about 40 ms at 640 px with the largest kernel."
+  },
+  "failures": [],
+  "behaviour": {
+    "default_trial_failures": [],
+    "at_default": {
+      "processing_ms": {
+        "mean": 2.361,
+        "median": 2.282,
+        "p99": 5.691
+      },
+      "spread_std_over_mean": 0.199,
+      "measured_items": 1498,
+      "measured_at_items_per_second": 183.04523849356485,
+      "throttled_share_of_periods": 0.0,
+      "memory_mb_one_worker": 497.9,
+      "seconds_inside_process": 3.625,
+      "cpu_seconds_not_explained_by_workers_or_harness": 0.0
+    },
+    "knobs": {
+      "data_quality": {
+        "lowest_value": 160,
+        "highest_value": 640,
+        "at_lowest_ms": 0.971,
+        "at_highest_ms": 6.184,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      },
+      "smoothing": {
+        "lowest_value": 3,
+        "highest_value": 15,
+        "at_lowest_ms": 3.234,
+        "at_highest_ms": 10.728,
+        "items_measured": [
+          31,
+          31
+        ],
+        "seen": "higher takes longer"
+      }
+    },
+    "workers": {
+      "workers": 4,
+      "rate_per_second": 200.0,
+      "kept_up": true,
+      "processing_mean_ms": 2.549,
+      "processing_mean_ms_with_one_worker": 2.361
+    },
+    "flags": [],
+    "notes": [],
+    "safe_rate_per_second": 182.8
+  }
+}

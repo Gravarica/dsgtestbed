@@ -1,0 +1,12 @@
+nodes:
+  frame-source:
+    service: frame-source v1
+    cores: 2
+    parallelism: 1
+    knobs:
+      checksum: crc32
+load:
+  rps: 200.0
+run:
+  warmup_seconds: 5
+  measure_seconds: 20

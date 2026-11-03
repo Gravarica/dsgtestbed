@@ -1,0 +1,12 @@
+tool: Claude Code
+model: Claude Opus 5.5 (1M context)
+mode: autonomous
+result: verified
+proof: At default settings every one of the 60 clips yields a finite matrix of the expected frames by 64 log-mel
+  plus 13 MFCC columns whose per-frame mel energy correlates above 0.95 with the frame energy computed
+  independently from the samples, with more than 80 per cent of the energy below 4 kHz as speech has.
+notes: Written by a sub-agent of the orchestrating Claude Code session, from the weekend-batch brief. NumPy only
+  (FFT, mel filter bank, DCT); one item takes about 2.3 ms at default settings and about 22 ms at the heaviest,
+  and prepare.sh copies the clips from speech-transcriber v1 when they are there. The brief first named the
+  frame length window_ms, a harness knob name the contract forbids; the first verify refused it, and the brief,
+  spec, service and tests were renamed to frame_ms before the second verify.

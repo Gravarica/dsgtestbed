@@ -1,0 +1,9 @@
+name: table-joiner
+version: v1
+service_type: table-joiner
+input: any
+output: table
+sample_count: 16
+knobs:
+  data_quality: {type: int, min: 1000, max: 1000000, default: 100000}
+  group_count: {type: int, min: 10, max: 100000, default: 1000}

@@ -1,0 +1,23 @@
+nodes:
+  resampler:
+    service: audio-resampler v1
+    discipline: fifo
+    cores_beyond_the_workers: 0.5
+    parallelism: [1, 2, 3, 4]
+  cleaner:
+    service: audio-denoiser v1
+    discipline: fifo
+    cores_beyond_the_workers: 0.5
+    parallelism: [1, 2, 3, 4]
+  features:
+    service: audio-features v1
+    discipline: fifo
+    cores_beyond_the_workers: 0.5
+    parallelism: [1, 2, 3, 4]
+edges: [resampler -> cleaner, cleaner -> features]
+link: requests
+shared_knobs:
+  data_quality: {from: 2, to: 12}
+load: {utilization: 0.5}
+run: {warmup_seconds: 10, measure_seconds: 30, measure_requests: 400, longest_measure_seconds: 180, probe_seconds: 8, queue_capacity: 1000000,
+  runs: 50, seed: 2017}

@@ -1,0 +1,11 @@
+nodes:
+  cv:
+    service: cv-analyzer v1
+    cores: [2, 3, 5]
+    parallelism: [1, 2, 4]
+    knobs:
+      data_quality: [128, 224, 320]
+      model_size: [1, 2, 3]
+load:
+  rps: [3, 6, 12]
+run: {warmup_seconds: 10, measure_seconds: 60, runs: 24, seed: 2}

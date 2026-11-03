@@ -1,0 +1,48 @@
+nodes:
+  signer-01:
+    service: hash-signer v1
+    cores: {from: 1, to: 2.5, step: 0.5}
+    knobs: {data_quality: [4, 16, 64], algorithm: [sha256, blake2b], rounds: [1000, 3000, 10000]}
+  signer-02:
+    service: hash-signer v1
+    cores: {from: 1, to: 2.5, step: 0.5}
+    knobs: {data_quality: [4, 16, 64], algorithm: [sha256, blake2b], rounds: [1000, 3000, 10000]}
+  signer-03:
+    service: hash-signer v1
+    cores: {from: 1, to: 2.5, step: 0.5}
+    knobs: {data_quality: [4, 16, 64], algorithm: [sha256, blake2b], rounds: [1000, 3000, 10000]}
+  signer-04:
+    service: hash-signer v1
+    cores: {from: 1, to: 2.5, step: 0.5}
+    knobs: {data_quality: [4, 16, 64], algorithm: [sha256, blake2b], rounds: [1000, 3000, 10000]}
+  signer-05:
+    service: hash-signer v1
+    cores: {from: 1, to: 2.5, step: 0.5}
+    knobs: {data_quality: [4, 16, 64], algorithm: [sha256, blake2b], rounds: [1000, 3000, 10000]}
+  signer-06:
+    service: hash-signer v1
+    cores: {from: 1, to: 2.5, step: 0.5}
+    knobs: {data_quality: [4, 16, 64], algorithm: [sha256, blake2b], rounds: [1000, 3000, 10000]}
+  signer-07:
+    service: hash-signer v1
+    cores: {from: 1, to: 2.5, step: 0.5}
+    knobs: {data_quality: [4, 16, 64], algorithm: [sha256, blake2b], rounds: [1000, 3000, 10000]}
+  signer-08:
+    service: hash-signer v1
+    cores: {from: 1, to: 2.5, step: 0.5}
+    knobs: {data_quality: [4, 16, 64], algorithm: [sha256, blake2b], rounds: [1000, 3000, 10000]}
+  signer-09:
+    service: hash-signer v1
+    cores: {from: 1, to: 2.5, step: 0.5}
+    knobs: {data_quality: [4, 16, 64], algorithm: [sha256, blake2b], rounds: [1000, 3000, 10000]}
+  signer-10:
+    service: hash-signer v1
+    cores: {from: 1, to: 2.5, step: 0.5}
+    knobs: {data_quality: [4, 16, 64], algorithm: [sha256, blake2b], rounds: [1000, 3000, 10000]}
+edges: [signer-01 -> signer-02, signer-02 -> signer-03, signer-03 -> signer-04, signer-04 -> signer-05, signer-05 -> signer-06, signer-06 -> signer-07, signer-07 -> signer-08, signer-08 -> signer-09, signer-09 -> signer-10]
+link: requests
+load:
+  rps: {from: 5, to: 60, step: 5}
+  burst_factor: [1, 2, 4, 8]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 5, measure_seconds: 30, runs: 80, seed: 61}

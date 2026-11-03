@@ -1,0 +1,140 @@
+nodes:
+  camera-01:
+    service: image-compressor v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552, 800]
+      encoding_quality: [50, 75, 90]
+      format: jpeg
+  camera-02:
+    service: image-compressor v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552, 800]
+      encoding_quality: [50, 75, 90]
+      format: jpeg
+  lidar-03:
+    service: pc-visualizer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [6, 30, 60]
+  audio-04:
+    service: audio-features v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [2, 4, 6]
+      mel_bands: [20, 40, 64]
+      frame_ms: [20, 25, 40]
+  audio-05:
+    service: audio-features v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [2, 4, 6]
+      mel_bands: [20, 40, 64]
+      frame_ms: [20, 25, 40]
+  anomaly-06:
+    service: anomaly-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      model_size: 1
+      window_length: [512, 1024, 2048]
+      threshold: 3.5
+  cluster-07:
+    service: pc-clusterer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [10, 20, 30]
+      voxel_size: [0.5, 0.75, 1.0]
+      cluster_distance: 0.7
+  tables-08:
+    service: table-joiner v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [1000, 3000, 10000]
+      group_count: [10, 100, 1000]
+  qr-09:
+    service: qr-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552]
+  audio-10:
+    service: audio-features v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [2, 4, 6]
+      mel_bands: [20, 40, 64]
+      frame_ms: [20, 25, 40]
+  signer-11:
+    service: hash-signer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [1, 4, 16]
+      algorithm: [sha256, blake2b]
+      rounds: [1000, 3000, 10000]
+  tables-12:
+    service: table-joiner v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [1000, 3000, 10000]
+      group_count: [10, 100, 1000]
+  qr-13:
+    service: qr-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552]
+  tables-14:
+    service: table-joiner v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [1000, 3000, 10000]
+      group_count: [10, 100, 1000]
+  cluster-15:
+    service: pc-clusterer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [10, 20, 30]
+      voxel_size: [0.5, 0.75, 1.0]
+      cluster_distance: 0.7
+  cluster-16:
+    service: pc-clusterer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [10, 20, 30]
+      voxel_size: [0.5, 0.75, 1.0]
+      cluster_distance: 0.7
+  anomaly-17:
+    service: anomaly-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      model_size: 1
+      window_length: [512, 1024, 2048]
+      threshold: 3.5
+  cluster-18:
+    service: pc-clusterer v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [10, 20, 30]
+      voxel_size: [0.5, 0.75, 1.0]
+      cluster_distance: 0.7
+  qr-19:
+    service: qr-detector v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [300, 552]
+  audio-20:
+    service: audio-features v1
+    cores: [0.5, 0.75, 1.0]
+    knobs:
+      data_quality: [2, 4, 6]
+      mel_bands: [20, 40, 64]
+      frame_ms: [20, 25, 40]
+edges: [camera-01 -> camera-02, camera-02 -> lidar-03, lidar-03 -> audio-04, audio-04 -> audio-05, audio-05 -> anomaly-06, anomaly-06 -> cluster-07,
+  cluster-07 -> tables-08, tables-08 -> qr-09, qr-09 -> audio-10, audio-10 -> signer-11, signer-11 -> tables-12, tables-12 -> qr-13, qr-13 ->
+    tables-14, tables-14 -> cluster-15, cluster-15 -> cluster-16, cluster-16 -> anomaly-17, anomaly-17 -> cluster-18, cluster-18 -> qr-19, qr-19
+    -> audio-20]
+link: requests
+load:
+  rps: {from: 5, to: 30, step: 5}
+  burst_factor: [1, 2, 4]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 19, measure_seconds: 30, runs: 40, seed: 3203}

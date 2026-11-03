@@ -1,0 +1,27 @@
+nodes:
+  logs:
+    service: log-parser v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {data_quality: {from: 100, to: 2000, step: 100}, pattern_count: [5, 20, 50, 100, 200]}
+  signer:
+    service: hash-signer v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {data_quality: [1, 4, 16, 64, 256], algorithm: [sha256, sha512, blake2b, sha3_256], rounds: [1000, 3000, 10000, 30000]}
+  tables:
+    service: table-joiner v1
+    cores: {from: 1, to: 3}
+    parallelism: [1, 2]
+    knobs: {data_quality: [1000, 3000, 10000, 30000, 100000], group_count: [10, 100, 1000, 10000]}
+  idx:
+    service: text-indexer v1
+    cores: {from: 1, to: 3}
+    knobs: {data_quality: {from: 10, to: 100, step: 10}, compression_level: {from: 1, to: 9}, ngram_size: [1, 2, 3]}
+edges: [logs -> signer, signer -> tables, tables -> idx]
+link: requests
+load:
+  rps: {from: 5, to: 40, step: 5}
+  burst_factor: [1, 2, 4, 8]
+  burst_seconds: [1, 2]
+run: {warmup_seconds: 5, measure_seconds: 30, runs: 50, seed: 47}

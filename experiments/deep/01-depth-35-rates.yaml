@@ -1,0 +1,152 @@
+nodes:
+  signer-01:
+    service: hash-signer v1
+    cores: 0.5
+    knobs: {data_quality: 4, algorithm: sha256, rounds: 3000}
+  agg-02:
+    service: sensor-aggregator v1
+    cores: 0.5
+    knobs: {window_length: 512, channels: 8, feature_set: basic}
+  audio-03:
+    service: audio-features v1
+    cores: 0.5
+    knobs: {data_quality: 4, mel_bands: 40, frame_ms: 25}
+  logs-04:
+    service: log-parser v1
+    cores: 0.5
+    knobs: {data_quality: 200, pattern_count: 20}
+  idx-05:
+    service: text-indexer v1
+    cores: 0.5
+    knobs: {data_quality: 50, compression_level: 6, ngram_size: 2}
+  face-06:
+    service: face-detector v1
+    cores: 0.5
+    knobs: {model_size: 1}
+  lidar-07:
+    service: pc-visualizer v1
+    cores: 0.5
+    knobs: {data_quality: 30}
+  camera-08:
+    service: image-compressor v1
+    cores: 0.5
+    knobs: {data_quality: 552, encoding_quality: 75, format: jpeg}
+  signer-09:
+    service: hash-signer v1
+    cores: 0.5
+    knobs: {data_quality: 4, algorithm: sha256, rounds: 3000}
+  agg-10:
+    service: sensor-aggregator v1
+    cores: 0.5
+    knobs: {window_length: 512, channels: 8, feature_set: basic}
+  audio-11:
+    service: audio-features v1
+    cores: 0.5
+    knobs: {data_quality: 4, mel_bands: 40, frame_ms: 25}
+  logs-12:
+    service: log-parser v1
+    cores: 0.5
+    knobs: {data_quality: 200, pattern_count: 20}
+  idx-13:
+    service: text-indexer v1
+    cores: 0.5
+    knobs: {data_quality: 50, compression_level: 6, ngram_size: 2}
+  face-14:
+    service: face-detector v1
+    cores: 0.5
+    knobs: {model_size: 1}
+  lidar-15:
+    service: pc-visualizer v1
+    cores: 0.5
+    knobs: {data_quality: 30}
+  camera-16:
+    service: image-compressor v1
+    cores: 0.5
+    knobs: {data_quality: 552, encoding_quality: 75, format: jpeg}
+  signer-17:
+    service: hash-signer v1
+    cores: 0.5
+    knobs: {data_quality: 4, algorithm: sha256, rounds: 3000}
+  agg-18:
+    service: sensor-aggregator v1
+    cores: 0.5
+    knobs: {window_length: 512, channels: 8, feature_set: basic}
+  audio-19:
+    service: audio-features v1
+    cores: 0.5
+    knobs: {data_quality: 4, mel_bands: 40, frame_ms: 25}
+  logs-20:
+    service: log-parser v1
+    cores: 0.5
+    knobs: {data_quality: 200, pattern_count: 20}
+  idx-21:
+    service: text-indexer v1
+    cores: 0.5
+    knobs: {data_quality: 50, compression_level: 6, ngram_size: 2}
+  face-22:
+    service: face-detector v1
+    cores: 0.5
+    knobs: {model_size: 1}
+  lidar-23:
+    service: pc-visualizer v1
+    cores: 0.5
+    knobs: {data_quality: 30}
+  camera-24:
+    service: image-compressor v1
+    cores: 0.5
+    knobs: {data_quality: 552, encoding_quality: 75, format: jpeg}
+  signer-25:
+    service: hash-signer v1
+    cores: 0.5
+    knobs: {data_quality: 4, algorithm: sha256, rounds: 3000}
+  agg-26:
+    service: sensor-aggregator v1
+    cores: 0.5
+    knobs: {window_length: 512, channels: 8, feature_set: basic}
+  audio-27:
+    service: audio-features v1
+    cores: 0.5
+    knobs: {data_quality: 4, mel_bands: 40, frame_ms: 25}
+  logs-28:
+    service: log-parser v1
+    cores: 0.5
+    knobs: {data_quality: 200, pattern_count: 20}
+  idx-29:
+    service: text-indexer v1
+    cores: 0.5
+    knobs: {data_quality: 50, compression_level: 6, ngram_size: 2}
+  face-30:
+    service: face-detector v1
+    cores: 0.5
+    knobs: {model_size: 1}
+  lidar-31:
+    service: pc-visualizer v1
+    cores: 0.5
+    knobs: {data_quality: 30}
+  camera-32:
+    service: image-compressor v1
+    cores: 0.5
+    knobs: {data_quality: 552, encoding_quality: 75, format: jpeg}
+  signer-33:
+    service: hash-signer v1
+    cores: 0.5
+    knobs: {data_quality: 4, algorithm: sha256, rounds: 3000}
+  agg-34:
+    service: sensor-aggregator v1
+    cores: 0.5
+    knobs: {window_length: 512, channels: 8, feature_set: basic}
+  audio-35:
+    service: audio-features v1
+    cores: 0.5
+    knobs: {data_quality: 4, mel_bands: 40, frame_ms: 25}
+edges: [signer-01 -> agg-02, agg-02 -> audio-03, audio-03 -> logs-04, logs-04 -> idx-05, idx-05 -> face-06, face-06 -> lidar-07, lidar-07 -> camera-08,
+  camera-08 -> signer-09, signer-09 -> agg-10, agg-10 -> audio-11, audio-11 -> logs-12, logs-12 -> idx-13, idx-13 -> face-14, face-14 -> lidar-15,
+  lidar-15 -> camera-16, camera-16 -> signer-17, signer-17 -> agg-18, agg-18 -> audio-19, audio-19 -> logs-20, logs-20 -> idx-21, idx-21 -> face-22,
+  face-22 -> lidar-23, lidar-23 -> camera-24, camera-24 -> signer-25, signer-25 -> agg-26, agg-26 -> audio-27, audio-27 -> logs-28, logs-28 ->
+    idx-29, idx-29 -> face-30, face-30 -> lidar-31, lidar-31 -> camera-32, camera-32 -> signer-33, signer-33 -> agg-34, agg-34 -> audio-35]
+link: rates
+load:
+  rps: [5, 10, 20]
+  burst_factor: [1, 2, 4]
+  burst_seconds: 1
+run: {warmup_seconds: 30, measure_seconds: 30, repetitions: 1, seed: 1035}
